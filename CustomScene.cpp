@@ -100,8 +100,7 @@ QPointF CustomScene::latLonToXY(double lat, double lon) {
     QJsonObject jsonObj= loadJsonFile();
     QJsonObject boundObj = jsonObj.value("Bound").toObject();
     QJsonObject screenObj = jsonObj.value("MainWindow").toObject();
-    /*double width = sceneRect().width();
-    double height = sceneRect().height();*/
+
     int width = screenObj.value("width").toInt();
     int height = screenObj.value("height").toInt();
     double minLat = boundObj.value("minLat").toDouble();
