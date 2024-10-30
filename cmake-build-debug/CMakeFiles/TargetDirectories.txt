@@ -1,0 +1,5 @@
+/home/oreste/CLionProjects/GraphicsInQt/cmake-build-debug/CMakeFiles/GraphicsInQt.dir
+/home/oreste/CLionProjects/GraphicsInQt/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/oreste/CLionProjects/GraphicsInQt/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/oreste/CLionProjects/GraphicsInQt/cmake-build-debug/CMakeFiles/GraphicsInQt_autogen_timestamp_deps.dir
+/home/oreste/CLionProjects/GraphicsInQt/cmake-build-debug/CMakeFiles/GraphicsInQt_autogen.dir

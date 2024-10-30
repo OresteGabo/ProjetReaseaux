@@ -1,0 +1,12 @@
+{
+    "Bound": {
+        "maxLat": 47.8317959,
+        "maxLon": 7.3724329,
+        "minLat": 47.7298336,
+        "minLon": 7.2904517
+    },
+    "MainWindow": {
+        "height": 1080,
+        "width": 1920
+    }
+}
