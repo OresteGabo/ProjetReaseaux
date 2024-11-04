@@ -41,9 +41,9 @@ private:
     QColor getColorForWay() const {
         if (tags.contains("highway")) {
             return Qt::blue; // Roads
-        } else if (tags.contains("building")) {
+        } else if (tags.contains("building")){
             return Qt::gray; // Buildings
-        } else if (tags.contains("waterway")) {
+        } else if (tags.contains("waterway")||tags.contains("river")) {
             return Qt::cyan; // Rivers
         } else if (tags.contains("forest")) {
             return Qt::green; // Forest

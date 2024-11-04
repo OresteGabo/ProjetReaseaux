@@ -9,7 +9,7 @@ DatabaseManager::DatabaseManager(const QString& dbName,
                 const QString& fileName)
 {
     initialiseDatabase(dbName, user, password);
-    parseData(fileName);
+    //parseData(fileName);
     ConfigManager cf=ConfigManager();
     calculateAndSaveBoundsToConfig(cf);
 }
@@ -253,4 +253,38 @@ void DatabaseManager::createTables() {
                ") ENGINE=InnoDB;");
 
     db.commit();
+}
+void DatabaseManager::markJunctionNodes() {
+    QSqlQuery query;
+
+    // Add the is_junction column if it doesn’t already exist
+    query.exec("ALTER TABLE nodes ADD COLUMN IF NOT EXISTS is_junction BOOLEAN DEFAULT FALSE;");
+
+    // Identify nodes that are junctions and set is_junction to true
+    if (!query.exec("UPDATE nodes SET is_junction = TRUE "
+                    "WHERE id IN (SELECT node_id FROM ways_nodes GROUP BY node_id HAVING COUNT(DISTINCT way_id) > 1);")) {
+        qDebug() << "Failed to update junction nodes:" << query.lastError();
+    } else {
+        qDebug() << "Junction nodes updated successfully.";
+    }
+}
+QMap<QString, QString> DatabaseManager::getWayTags(const QString &wayId) {
+    QMap<QString, QString> tags;
+    QSqlQuery query;
+
+    // Query to get all tags for the specified way
+    query.prepare("SELECT tag_key, value FROM tags WHERE element_id = :wayId AND element_type = 'way';");
+    query.bindValue(":wayId", wayId);
+
+    if (query.exec()) {
+        while (query.next()) {
+            QString key = query.value(0).toString();
+            QString value = query.value(1).toString();
+            tags.insert(key, value);
+        }
+    } else {
+        qDebug() << "Failed to retrieve tags for way" << wayId << ":" << query.lastError();
+    }
+
+    return tags;
 }

@@ -6,19 +6,57 @@
 #include "ConfigManager.h"
 #include <QPoint>
 #include <QPlainTextEdit>
-
-CustomGraphicsView::CustomGraphicsView(QWidget *parent)
+#include <QVBoxLayout>
+#include <QPushButton>
+#include <QGraphicsItem>
+#include <QGraphicsProxyWidget>
+CustomGraphicsView::CustomGraphicsView(QGraphicsScene* scene,QWidget *parent)
         : QGraphicsView(parent), isDragging(false) {
     setRenderHint(QPainter::Antialiasing);
     setDragMode(QGraphicsView::ScrollHandDrag);
 
+
+
     ConfigManager configManager("config.json");
-    int height=configManager.getMainWindowSize().height();
-    int width=configManager.getMainWindowSize().width();
+    auto height=configManager.getMainWindowSize().height();
+    auto width=configManager.getMainWindowSize().width();
     setFixedHeight(height);
     setFixedWidth(width);
-    auto debugOutput=new QPlainTextEdit();
-    debugOutput->appendPlainText("Hello debugger");
+
+
+    // Create the QTextEdit for the debugger text area
+    auto debugTextArea = new QTextEdit();
+    debugTextArea->setReadOnly(true);
+    debugTextArea->setFixedSize(100, 100);  // Set fixed width and height as needed
+
+
+    // Add buttons in a layout
+    auto buttonContainer = new QWidget();
+    auto buttonLayout = new QVBoxLayout();
+    auto button1 = new QPushButton("Button 1");
+    auto button2 = new QPushButton("Button 2");
+    buttonLayout->addWidget(button1);
+    buttonLayout->addWidget(button2);
+    buttonContainer->setLayout(buttonLayout);
+
+    // Main widget to hold both the text area and buttons
+    auto debuggerWidget = new QWidget();
+    auto debuggerLayout = new QVBoxLayout(debuggerWidget);
+    debuggerLayout->addWidget(debugTextArea);
+    debuggerLayout->addWidget(buttonContainer);
+
+    // Use a proxy widget to embed the debugger widget in the graphics view
+    QGraphicsProxyWidget *proxyWidget = scene->addWidget(debuggerWidget);
+
+    // Position on the right side of the view
+    proxyWidget->setPos( 320, 10);  // Adjust position as needed
+
+    // Ensure the debugger widget doesn’t zoom or move with the scene
+    proxyWidget->setFlag(QGraphicsItem::ItemIgnoresTransformations);
+
+
+    setScene(scene);
+    fitInView(scene->sceneRect(), Qt::KeepAspectRatio); // Fit scene into view
 
 
 }

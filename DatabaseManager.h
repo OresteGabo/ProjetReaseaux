@@ -98,5 +98,7 @@ private:
 
     static bool parseNodes(QXmlStreamReader &xml, QSqlQuery &query);
     static bool parseWays(QXmlStreamReader &xml, QSqlQuery &query);
+    void markJunctionNodes();
+    QMap<QString, QString> getWayTags(const QString &wayId);
 
 };

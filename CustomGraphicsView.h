@@ -11,12 +11,13 @@
 #include <QPointF>
 #include <QPoint>
 #include <QScrollBar>
+#include <QGraphicsScene>
 
 class CustomGraphicsView : public QGraphicsView {
 Q_OBJECT
 
 public:
-    CustomGraphicsView(QWidget *parent = nullptr);
+    CustomGraphicsView(QGraphicsScene* scene,QWidget *parent = nullptr);
 
 protected:
     void wheelEvent(QWheelEvent *event) override;
