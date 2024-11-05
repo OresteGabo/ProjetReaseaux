@@ -114,6 +114,12 @@
 			null
 		],
 		[
+			"/home/oreste/CLionProjects/GraphicsInQt/MainWidget.h",
+			"MU",
+			"EWIEGA46WW/moc_MainWidget.cpp",
+			null
+		],
+		[
 			"/home/oreste/CLionProjects/GraphicsInQt/Node.h",
 			"MU",
 			"EWIEGA46WW/moc_Node.cpp",
@@ -206,6 +212,7 @@
 			"MU",
 			null
 		],
+		[ "/home/oreste/CLionProjects/GraphicsInQt/MainWidget.cpp", "MU", null ],
 		[ "/home/oreste/CLionProjects/GraphicsInQt/Node.cpp", "MU", null ],
 		[ "/home/oreste/CLionProjects/GraphicsInQt/Path.cpp", "MU", null ],
 		[ "/home/oreste/CLionProjects/GraphicsInQt/PathNode.cpp", "MU", null ],

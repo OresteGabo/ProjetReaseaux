@@ -21,39 +21,7 @@ CustomGraphicsView::CustomGraphicsView(QGraphicsScene* scene,QWidget *parent)
     auto height=configManager.getMainWindowSize().height();
     auto width=configManager.getMainWindowSize().width();
     setFixedHeight(height);
-    setFixedWidth(width);
-
-
-    // Create the QTextEdit for the debugger text area
-    auto debugTextArea = new QTextEdit();
-    debugTextArea->setReadOnly(true);
-    debugTextArea->setFixedSize(100, 100);  // Set fixed width and height as needed
-
-
-    // Add buttons in a layout
-    auto buttonContainer = new QWidget();
-    auto buttonLayout = new QVBoxLayout();
-    auto button1 = new QPushButton("Button 1");
-    auto button2 = new QPushButton("Button 2");
-    buttonLayout->addWidget(button1);
-    buttonLayout->addWidget(button2);
-    buttonContainer->setLayout(buttonLayout);
-
-    // Main widget to hold both the text area and buttons
-    auto debuggerWidget = new QWidget();
-    auto debuggerLayout = new QVBoxLayout(debuggerWidget);
-    debuggerLayout->addWidget(debugTextArea);
-    debuggerLayout->addWidget(buttonContainer);
-
-    // Use a proxy widget to embed the debugger widget in the graphics view
-    QGraphicsProxyWidget *proxyWidget = scene->addWidget(debuggerWidget);
-
-    // Position on the right side of the view
-    proxyWidget->setPos( 320, 10);  // Adjust position as needed
-
-    // Ensure the debugger widget doesn’t zoom or move with the scene
-    proxyWidget->setFlag(QGraphicsItem::ItemIgnoresTransformations);
-
+    setFixedWidth(width-300);
 
     setScene(scene);
     fitInView(scene->sceneRect(), Qt::KeepAspectRatio); // Fit scene into view

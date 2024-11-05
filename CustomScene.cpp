@@ -10,10 +10,6 @@
 CustomScene::CustomScene(int width, int height, QObject *parent)
         : QGraphicsScene(parent) {
     setSceneRect(0, 0, width, height);
-    auto debugOutput=new QPlainTextEdit();
-    debugOutput->appendPlainText("Hello debugger");
-    addWidget(debugOutput);
-    //setBackgroundBrush(Qt::blue);
     loadNodesFromDatabase();
     loadWaysFromDatabase();
 

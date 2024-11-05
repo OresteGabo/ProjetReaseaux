@@ -6,7 +6,8 @@
 #include <QJsonObject>
 #include <QRect>
 #include <QDebug>
-
+#include <QGuiApplication>
+#include <QScreen>
 class ConfigManager {
     QJsonObject jsonObj;
     QString configFileName;
@@ -28,6 +29,11 @@ public:
             jsonObj = jsonDoc.isObject() ? jsonDoc.object() : QJsonObject();
             file.close();
         }
+
+        // Get screen size and configure main window dimensions
+        auto screen = QGuiApplication::primaryScreen();
+        auto screenGeometry = screen->geometry();
+        setMainWindowSize(screenGeometry);
     }
 
 
@@ -66,6 +72,17 @@ public:
 
         // Write the updated JSON to file
         writeToFile();
+    }
+
+    static QJsonObject loadJsonFile(const QString &configFileName="config.json") {
+        QFile file(configFileName);
+        if (!file.open(QIODevice::ReadOnly)) {
+            qWarning() << "Could not open JSON file:" << configFileName;
+            return QJsonObject();
+        }
+        QByteArray jsonData = file.readAll();
+        QJsonDocument jsonDoc(QJsonDocument::fromJson(jsonData));
+        return  jsonDoc.object();
     }
 
 

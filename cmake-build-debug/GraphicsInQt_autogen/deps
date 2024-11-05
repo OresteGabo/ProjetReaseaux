@@ -29,6 +29,8 @@ GraphicsInQt_autogen/timestamp: \
 	/home/oreste/CLionProjects/GraphicsInQt/CustomScene.h \
 	/home/oreste/CLionProjects/GraphicsInQt/DatabaseManager.cpp \
 	/home/oreste/CLionProjects/GraphicsInQt/DatabaseManager.h \
+	/home/oreste/CLionProjects/GraphicsInQt/MainWidget.cpp \
+	/home/oreste/CLionProjects/GraphicsInQt/MainWidget.h \
 	/home/oreste/CLionProjects/GraphicsInQt/Node.cpp \
 	/home/oreste/CLionProjects/GraphicsInQt/Node.h \
 	/home/oreste/CLionProjects/GraphicsInQt/Path.cpp \
@@ -300,8 +302,10 @@ GraphicsInQt_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt5/QtCore/qcoreevent.h \
 	/usr/include/x86_64-linux-gnu/qt5/QtCore/qdatastream.h \
 	/usr/include/x86_64-linux-gnu/qt5/QtCore/qdebug.h \
+	/usr/include/x86_64-linux-gnu/qt5/QtCore/qdir.h \
 	/usr/include/x86_64-linux-gnu/qt5/QtCore/qfile.h \
 	/usr/include/x86_64-linux-gnu/qt5/QtCore/qfiledevice.h \
+	/usr/include/x86_64-linux-gnu/qt5/QtCore/qfileinfo.h \
 	/usr/include/x86_64-linux-gnu/qt5/QtCore/qflags.h \
 	/usr/include/x86_64-linux-gnu/qt5/QtCore/qgenericatomic.h \
 	/usr/include/x86_64-linux-gnu/qt5/QtCore/qglobal.h \
@@ -361,6 +365,7 @@ GraphicsInQt_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt5/QtGui/qfont.h \
 	/usr/include/x86_64-linux-gnu/qt5/QtGui/qfontinfo.h \
 	/usr/include/x86_64-linux-gnu/qt5/QtGui/qfontmetrics.h \
+	/usr/include/x86_64-linux-gnu/qt5/QtGui/qicon.h \
 	/usr/include/x86_64-linux-gnu/qt5/QtGui/qimage.h \
 	/usr/include/x86_64-linux-gnu/qt5/QtGui/qkeysequence.h \
 	/usr/include/x86_64-linux-gnu/qt5/QtGui/qmatrix.h \
@@ -375,6 +380,9 @@ GraphicsInQt_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt5/QtGui/qregion.h \
 	/usr/include/x86_64-linux-gnu/qt5/QtGui/qrgb.h \
 	/usr/include/x86_64-linux-gnu/qt5/QtGui/qrgba64.h \
+	/usr/include/x86_64-linux-gnu/qt5/QtGui/qtextcursor.h \
+	/usr/include/x86_64-linux-gnu/qt5/QtGui/qtextdocument.h \
+	/usr/include/x86_64-linux-gnu/qt5/QtGui/qtextformat.h \
 	/usr/include/x86_64-linux-gnu/qt5/QtGui/qtextoption.h \
 	/usr/include/x86_64-linux-gnu/qt5/QtGui/qtgui-config.h \
 	/usr/include/x86_64-linux-gnu/qt5/QtGui/qtguiglobal.h \
@@ -388,21 +396,36 @@ GraphicsInQt_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt5/QtSql/qsqlquery.h \
 	/usr/include/x86_64-linux-gnu/qt5/QtSql/qtsql-config.h \
 	/usr/include/x86_64-linux-gnu/qt5/QtSql/qtsqlglobal.h \
+	/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QFileDialog \
 	/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QGraphicsItem \
 	/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QGraphicsLineItem \
 	/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QGraphicsPolygonItem \
 	/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QGraphicsScene \
 	/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QGraphicsView \
+	/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QHBoxLayout \
+	/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QPushButton \
 	/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QScrollBar \
+	/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QTextEdit \
+	/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QVBoxLayout \
+	/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QWidget \
+	/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qabstractbutton.h \
 	/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qabstractscrollarea.h \
 	/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qabstractslider.h \
+	/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qboxlayout.h \
+	/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdialog.h \
+	/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qfiledialog.h \
 	/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qframe.h \
 	/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgraphicsitem.h \
 	/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgraphicsscene.h \
 	/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgraphicsview.h \
+	/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgridlayout.h \
+	/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qlayout.h \
+	/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qlayoutitem.h \
+	/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qpushbutton.h \
 	/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qscrollarea.h \
 	/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qscrollbar.h \
 	/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qsizepolicy.h \
+	/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtextedit.h \
 	/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgets-config.h \
 	/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgetsglobal.h \
 	/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qwidget.h \

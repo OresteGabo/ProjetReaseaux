@@ -137,6 +137,14 @@ build CMakeFiles/GraphicsInQt.dir/PathNode.cpp.o: CXX_COMPILER__GraphicsInQt_uns
   OBJECT_DIR = CMakeFiles/GraphicsInQt.dir
   OBJECT_FILE_DIR = CMakeFiles/GraphicsInQt.dir
 
+build CMakeFiles/GraphicsInQt.dir/MainWidget.cpp.o: CXX_COMPILER__GraphicsInQt_unscanned_Debug /home/oreste/CLionProjects/GraphicsInQt/MainWidget.cpp || cmake_object_order_depends_target_GraphicsInQt
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_SQL_LIB -DQT_WIDGETS_LIB
+  DEP_FILE = CMakeFiles/GraphicsInQt.dir/MainWidget.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always -fPIC
+  INCLUDES = -isystem /home/oreste/CLionProjects/GraphicsInQt/cmake-build-debug/GraphicsInQt_autogen/include -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtSql
+  OBJECT_DIR = CMakeFiles/GraphicsInQt.dir
+  OBJECT_FILE_DIR = CMakeFiles/GraphicsInQt.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target GraphicsInQt
@@ -145,7 +153,7 @@ build CMakeFiles/GraphicsInQt.dir/PathNode.cpp.o: CXX_COMPILER__GraphicsInQt_uns
 #############################################
 # Link the executable GraphicsInQt
 
-build GraphicsInQt: CXX_EXECUTABLE_LINKER__GraphicsInQt_Debug CMakeFiles/GraphicsInQt.dir/GraphicsInQt_autogen/mocs_compilation.cpp.o CMakeFiles/GraphicsInQt.dir/main.cpp.o CMakeFiles/GraphicsInQt.dir/Node.cpp.o CMakeFiles/GraphicsInQt.dir/CustomScene.cpp.o CMakeFiles/GraphicsInQt.dir/Way.cpp.o CMakeFiles/GraphicsInQt.dir/DatabaseManager.cpp.o CMakeFiles/GraphicsInQt.dir/ConfigManager.cpp.o CMakeFiles/GraphicsInQt.dir/CustomGraphicsView.cpp.o CMakeFiles/GraphicsInQt.dir/Car.cpp.o CMakeFiles/GraphicsInQt.dir/Path.cpp.o CMakeFiles/GraphicsInQt.dir/PathNode.cpp.o | /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5.15.3 /usr/lib/x86_64-linux-gnu/libQt5Sql.so.5.15.3 /usr/lib/x86_64-linux-gnu/libQt5Gui.so.5.15.3 /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.15.3 || GraphicsInQt_autogen GraphicsInQt_autogen_timestamp_deps
+build GraphicsInQt: CXX_EXECUTABLE_LINKER__GraphicsInQt_Debug CMakeFiles/GraphicsInQt.dir/GraphicsInQt_autogen/mocs_compilation.cpp.o CMakeFiles/GraphicsInQt.dir/main.cpp.o CMakeFiles/GraphicsInQt.dir/Node.cpp.o CMakeFiles/GraphicsInQt.dir/CustomScene.cpp.o CMakeFiles/GraphicsInQt.dir/Way.cpp.o CMakeFiles/GraphicsInQt.dir/DatabaseManager.cpp.o CMakeFiles/GraphicsInQt.dir/ConfigManager.cpp.o CMakeFiles/GraphicsInQt.dir/CustomGraphicsView.cpp.o CMakeFiles/GraphicsInQt.dir/Car.cpp.o CMakeFiles/GraphicsInQt.dir/Path.cpp.o CMakeFiles/GraphicsInQt.dir/PathNode.cpp.o CMakeFiles/GraphicsInQt.dir/MainWidget.cpp.o | /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5.15.3 /usr/lib/x86_64-linux-gnu/libQt5Sql.so.5.15.3 /usr/lib/x86_64-linux-gnu/libQt5Gui.so.5.15.3 /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.15.3 || GraphicsInQt_autogen GraphicsInQt_autogen_timestamp_deps
   FLAGS = -g
   LINK_LIBRARIES = /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5.15.3  /usr/lib/x86_64-linux-gnu/libQt5Sql.so.5.15.3  /usr/lib/x86_64-linux-gnu/libQt5Gui.so.5.15.3  /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.15.3
   OBJECT_DIR = CMakeFiles/GraphicsInQt.dir
@@ -203,7 +211,7 @@ build GraphicsInQt_autogen/timestamp GraphicsInQt_autogen/mocs_compilation.cpp |
 #############################################
 # Phony custom command for CMakeFiles/GraphicsInQt_autogen_timestamp_deps
 
-build CMakeFiles/GraphicsInQt_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/GraphicsInQt_autogen_timestamp_deps: phony /usr/lib/x86_64-linux-gnu/libQt5Gui.so.5.15.3 /usr/lib/x86_64-linux-gnu/libQt5Sql.so.5.15.3 /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.15.3 /usr/lib/qt5/bin/moc /usr/lib/qt5/bin/uic /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5.15.3
+build CMakeFiles/GraphicsInQt_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/GraphicsInQt_autogen_timestamp_deps: phony /usr/lib/x86_64-linux-gnu/libQt5Gui.so.5.15.3 /usr/lib/x86_64-linux-gnu/libQt5Sql.so.5.15.3 /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.15.3 /usr/lib/qt5/bin/moc /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5.15.3 /usr/lib/qt5/bin/uic
 
 
 #############################################

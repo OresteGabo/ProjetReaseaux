@@ -33,6 +33,8 @@ add_executable(GraphicsInQt main.cpp
         Path.h
         PathNode.cpp
         PathNode.h
+        MainWidget.cpp
+        MainWidget.h
 )
 target_link_libraries(GraphicsInQt
         Qt5::Core
