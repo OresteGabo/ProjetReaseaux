@@ -24,6 +24,8 @@ private:
     static QJsonObject loadJsonFile(const QString &configFileName="config.json");
     void loadNodesFromDatabase();
     void loadWaysFromDatabase();
+    void loadSpecificWays(const QString &type, const QColor &color);
+    void updateSceneSize();
 };
 
 #endif // CUSTOMSCENE_H

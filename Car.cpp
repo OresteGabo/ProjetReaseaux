@@ -7,7 +7,7 @@
 #include<QRandomGenerator>
 #include <QBrush>
 #include <QtMath>
-
+/*
 Car::Car(int id,PathNode* destinationPathHead, double speed,const QPixmap& car,double frequence) :
 
         speed(speed), destinationPathHead(destinationPathHead),
@@ -73,3 +73,4 @@ void Car::updateConnectedCars(QVector<Car*> allCars) {
         }
     }
 }
+*/

@@ -20,7 +20,7 @@ CustomGraphicsView::CustomGraphicsView(QGraphicsScene* scene,QWidget *parent)
     ConfigManager configManager("config.json");
     auto height=configManager.getMainWindowSize().height();
     auto width=configManager.getMainWindowSize().width();
-    setFixedHeight(height);
+    setFixedHeight(height-75);
     setFixedWidth(width-300);
 
     setScene(scene);
@@ -28,7 +28,10 @@ CustomGraphicsView::CustomGraphicsView(QGraphicsScene* scene,QWidget *parent)
 
 
 }
-
+void CustomGraphicsView::showEvent(QShowEvent *event) {
+    QGraphicsView::showEvent(event);
+    fitInView(scene()->sceneRect(), Qt::KeepAspectRatio);
+}
 void CustomGraphicsView::wheelEvent(QWheelEvent *event) {
     // Zoom in/out
     if (event->angleDelta().y() > 0) {

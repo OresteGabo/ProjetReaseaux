@@ -18,7 +18,7 @@ public:
     [[nodiscard]] PathNode* getFinalPath()const;
     [[nodiscard]] int getSize()const;
     [[nodiscard]] PathNode* getHead()const;
-    void draw(QPainter& painter) const;
+    void draw(CustomScene* scene) ;
     void logMessage(const QString &message, QPlainTextEdit *debugOutput )const;
 private:
     PathNode* head;

@@ -10,34 +10,59 @@
 CustomScene::CustomScene(int width, int height, QObject *parent)
         : QGraphicsScene(parent) {
     setSceneRect(0, 0, width, height);
-    loadNodesFromDatabase();
+    setBackgroundBrush(QBrush(Qt::lightGray));
     loadWaysFromDatabase();
+    loadNodesFromDatabase();
 
 }
 
 void CustomScene::loadNodesFromDatabase() {
     QSqlQuery query;
-    query.exec("SELECT node_id, latitude, longitude FROM nodes");
+    query.exec("SELECT id, lat, lon, isImportant FROM nodes");
 
     while (query.next()) {
         QString nodeId = query.value(0).toString();
         double lat = query.value(1).toDouble();
         double lon = query.value(2).toDouble();
-
-        QPointF position = latLonToXY(lat, lon);
-        // Create a visual representation of the node
-        QGraphicsEllipseItem *nodeItem = addEllipse(position.x() - 2, position.y() - 2, 4, 4, QPen(Qt::blue), QBrush(Qt::blue));
-        nodeItem->setData(0, nodeId); // Store the node ID in the item's data for later reference
+        bool isImportant = query.value(3).toBool();
+        if(isImportant) {
+            QPointF position = latLonToXY(lat, lon);
+            // Create a visual representation of the node
+            QGraphicsEllipseItem *nodeItem = addEllipse(position.x() - 0.2, position.y() - 0.2, 0.4, 0.4, QPen(Qt::blue),
+                                                        QBrush(Qt::blue));
+            nodeItem->setData(0, nodeId); // Store the node ID in the item's data for later reference
+        }
     }
 }
 
 void CustomScene::loadWaysFromDatabase() {
-
     QSqlQuery query;
-    query.exec("SELECT id FROM ways");
+
+    // Load and draw road ways first
+    loadSpecificWays("highway", Qt::darkGray);//QColor(128, 128, 128, 60));//QColor(128, 128, 128, 180)); // Grey color for roads
+
+    // Load and draw other types of ways
+    loadSpecificWays("waterway", QColor(0, 150, 255, 120));    // Blue color for rivers
+    loadSpecificWays("building", QColor(150, 75, 0, 150)); // Light grey for buildings
+    loadSpecificWays("landuse", QColor(34, 139, 34, 150));   // Green for parks/land
+}
+
+void CustomScene::loadSpecificWays(const QString &type, const QColor &color) {
+    QSqlQuery query;
+    query.prepare("SELECT id FROM ways WHERE id IN (SELECT element_id FROM tags WHERE tag_key = :type)");
+    query.bindValue(":type", type);
+    query.exec();
+
+    QPen pen(color);
+    if (type != "highway") {
+        pen.setCosmetic(true); // Make the pen non-scaling for non-roads
+    }
+
+    // Set smoother line joins and caps
+    pen.setJoinStyle(Qt::RoundJoin);
+    pen.setCapStyle(Qt::RoundCap);
 
     while (query.next()) {
-
         QString wayId = query.value(0).toString();
         QVector<QPointF> wayPoints;
 
@@ -48,42 +73,40 @@ void CustomScene::loadWaysFromDatabase() {
         wayQuery.exec();
 
         while (wayQuery.next()) {
-            //qDebug()<<"load ways called  and there is a next";
             QString nodeId = wayQuery.value(0).toString();
+
             // Fetch node coordinates based on node ID
             QSqlQuery nodeQuery;
             nodeQuery.prepare("SELECT lat, lon FROM nodes WHERE id = :id");
             nodeQuery.bindValue(":id", nodeId);
 
             if (!nodeQuery.exec()) {
-                qDebug() << "Query execution failed:" << nodeQuery.lastError().text();
+                qDebug() << "Node query execution failed:" << nodeQuery.lastError().text();
+                continue;
             }
-            ///TODO nodeQuery .next is always false
+
             if (nodeQuery.next()) {
                 double lat = nodeQuery.value(0).toDouble();
                 double lon = nodeQuery.value(1).toDouble();
-                QPointF pos= latLonToXY(lat, lon);
+                QPointF pos = latLonToXY(lat, lon);
                 wayPoints.append(pos);
-                //qDebug() << "QPointF pos: " << pos;
-            }else{
-               // qDebug() << "ERROR";
             }
         }
 
         // Draw the way depending on whether it's a closed or open polygon
         if (!wayPoints.isEmpty()) {
             if (wayPoints.first() == wayPoints.last()) {
-                // Closed polygon
+                // Closed polygon (e.g., buildings)
                 QPolygonF polygon(wayPoints);
-                addPolygon(polygon, QPen(Qt::green), QBrush(Qt::green));
+                addPolygon(polygon, pen, QBrush(color));
             } else {
-                // Open polyline
+                // Open polyline (e.g., roads, rivers)
                 QPainterPath path;
                 path.moveTo(wayPoints.first());
                 for (const QPointF &point : wayPoints) {
                     path.lineTo(point);
                 }
-                addPath(path, QPen(Qt::red), QBrush(Qt::NoBrush));
+                addPath(path, pen, QBrush(Qt::NoBrush));
             }
         }
     }

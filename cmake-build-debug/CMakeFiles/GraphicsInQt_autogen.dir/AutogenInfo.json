@@ -84,6 +84,12 @@
 	"HEADERS" : 
 	[
 		[
+			"/home/oreste/CLionProjects/GraphicsInQt/AddCarDialog.h",
+			"MU",
+			"EWIEGA46WW/moc_AddCarDialog.cpp",
+			null
+		],
+		[
 			"/home/oreste/CLionProjects/GraphicsInQt/Car.h",
 			"MU",
 			"EWIEGA46WW/moc_Car.cpp",
@@ -142,6 +148,12 @@
 			"MU",
 			"EWIEGA46WW/moc_Way.cpp",
 			null
+		],
+		[
+			"/home/oreste/CLionProjects/GraphicsInQt/djkstra.h",
+			"MU",
+			"EWIEGA46WW/moc_djkstra.cpp",
+			null
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
@@ -195,6 +207,11 @@
 	"SETTINGS_FILE" : "/home/oreste/CLionProjects/GraphicsInQt/cmake-build-debug/CMakeFiles/GraphicsInQt_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
+		[
+			"/home/oreste/CLionProjects/GraphicsInQt/AddCarDialog.cpp",
+			"MU",
+			null
+		],
 		[ "/home/oreste/CLionProjects/GraphicsInQt/Car.cpp", "MU", null ],
 		[
 			"/home/oreste/CLionProjects/GraphicsInQt/ConfigManager.cpp",

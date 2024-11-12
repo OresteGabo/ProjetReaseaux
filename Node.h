@@ -20,7 +20,7 @@ public:
     double lon;
     bool isJunction;
     QPointF position;
-
+    double distanceTo(const Node *other) const;
     Node(const QString &id, double lat, double lon, const QPointF &pos)
             : id(id), lat(lat), lon(lon), position(pos) {
         qDebug() << "Node constructor called with parameters - Id:" << id

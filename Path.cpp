@@ -54,15 +54,22 @@ int Path::getSize()const{
 PathNode* Path::getHead()const{
     return head;
 }
-void Path::draw(QPainter& painter) const {
-    // Draw the car at its current position
-    painter.setBrush(QBrush(Qt::green));
-    PathNode* s=head;
-    if(s==nullptr)return;
-    while(s->next){
-        //painter.drawLine(s->getArret()->x(),s->getArret()->y(),s->next->getArret()->x(),s->next->getArret()->y());
-        //painter.drawLine(s->getArret()->x(),s->getArret()->y()+10,s->next->getArret()->x(),s->next->getArret()->y()+10);
-        s=s->next;
+void Path::draw(CustomScene* scene)  {
+    if (!head) return;
+
+    PathNode *current = head;
+    while (current && current->next) {
+        qDebug()<<current->getNode()->toPoint();
+        auto startNode = current->getNode();
+        auto endNode = current->next->getNode();
+
+        // Convert latitude/longitude to scene coordinates
+        QPointF startPoint = CustomScene::latLonToXY(startNode->lat, startNode->lon);
+        QPointF endPoint = CustomScene::latLonToXY(endNode->lat, endNode->lon);
+
+        // Draw the line on the scene
+        scene->addLine(QLineF(startPoint, endPoint), QPen(Qt::red, 2));
+        current = current->next;
     }
 }
 

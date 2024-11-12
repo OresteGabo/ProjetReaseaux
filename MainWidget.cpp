@@ -5,7 +5,10 @@
 #include <QMessageBox>
 #include <QGuiApplication>
 #include "CustomScene.h"
-
+#include "AddCarDialog.h"
+#include "Node.h"
+#include "Path.h"
+#include "djkstra.h"
 MainWidget::MainWidget(QWidget *parent) : QWidget(parent) {
 
     QJsonObject jsonObj= ConfigManager::loadJsonFile();
@@ -68,9 +71,62 @@ void MainWidget::changeData() {
         debugTextArea->append("Loaded file: " + filePath);
     }
 }
-
+/*
 void MainWidget::addCar() {
-    // Open a custom dialog to add a car
-    debugTextArea->append("Add Car button clicked");
-    // Create and show the dialog here
+    auto dialog = new AddCarDialog(graphicsView->scene());
+
+    connect(dialog, &AddCarDialog::carAdded, [this](const QPointF &initial, const QPointF &destination, int speed, int frequency) {
+        debugTextArea->append(QString("Car added: From (%1, %2) to (%3, %4) with speed %5 and frequency %6")
+                                      .arg(initial.x()).arg(initial.y())
+                                      .arg(destination.x()).arg(destination.y())
+                                      .arg(speed).arg(frequency));
+
+        // Create a new Car and add it to the vector
+        QString initialNodeId = QString::number(initial.x()) + "," + QString::number(initial.y());
+        QString destinationNodeId = QString::number(destination.x()) + "," + QString::number(destination.y());
+
+        // Create new car, pass the scene
+        auto newCar = new Car(QString::number(qrand()), initialNodeId, destinationNodeId, graphicsView->scene());
+        qDebug()<<"Initial node used is "<<initialNodeId << " and destination node used is " <<destinationNodeId;
+        cars.push_back(newCar);
+    });
+
+    dialog->exec();
+}
+*/
+void MainWidget::addCar() {
+    auto dialog = new AddCarDialog(graphicsView->scene());
+
+    // Connect the signal from AddCarDialog with the selected node IDs
+    connect(dialog, &AddCarDialog::carAdded, [this](const QString &initialNodeId, const QString &destinationNodeId, int speed, int frequency){
+        debugTextArea->append(QString("Car added: From node %1 to node %2 with speed %3 and frequency %4")
+                                      .arg(initialNodeId)
+                                      .arg(destinationNodeId)
+                                      .arg(speed)
+                                      .arg(frequency));
+
+        // Create a new Car using the node IDs from the database
+        auto newCar = new Car(QString::number(qrand()), initialNodeId, destinationNodeId, graphicsView->scene());
+        qDebug() << "Initial node ID used:" << initialNodeId << ", Destination node ID used:" << destinationNodeId;
+
+        cars.push_back(newCar);
+    });
+
+    dialog->exec();
+}
+void MainWidget::generatePath(Node *initialNode, Node *destinationNode) {
+    debugTextArea->append("Generating shortest path...");
+
+    // Call the Dijkstra's function
+    Path *path = generateShortestPath(initialNode, destinationNode, nodes, adjacencyList);
+
+    if (path) {
+        debugTextArea->append("Path generated successfully.");
+        paths.push_back(path); // Store the path
+
+        // Draw the path using CustomScene
+        path->draw(dynamic_cast<CustomScene *>(graphicsView->scene()));
+    } else {
+        debugTextArea->append("No path found.");
+    }
 }

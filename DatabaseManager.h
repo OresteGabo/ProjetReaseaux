@@ -11,6 +11,7 @@
 #include <QMap>
 #include "ConfigManager.h"
 #include <QDebug>
+
 class DatabaseManager {
 public:
 
@@ -20,6 +21,7 @@ public:
                     const QString& fileName);
     ~DatabaseManager()
     {
+
         // close database connection if necessary
     }
 
@@ -64,7 +66,7 @@ private:
 
     void truncateAllTables() {
         QSqlQuery query;
-        QStringList tables = {"relations_members","ways_nodes", "tags","relations","ways","nodes"};
+        QStringList tables = {"relations_members","ways_nodes", "tags","relations","ways","address","nodes"};
 
         db.transaction();
         for (const auto &tableName : tables) {
