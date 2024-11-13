@@ -10,9 +10,13 @@ DatabaseManager::DatabaseManager(
         const QString& fileName)
 {
     initialiseDatabase(dbName, user, password);
-    //parseData(fileName);
-    //ConfigManager cf=ConfigManager();
-    //calculateAndSaveBoundsToConfig(cf);
+    QSqlQuery query;
+
+    if(!query.prepare("SELECT COUNT(*) FROM ways")) {
+        parseData(fileName);
+        ConfigManager cf = ConfigManager();
+        calculateAndSaveBoundsToConfig(cf);
+    }
 }
 
 // Step 2a: Parse nodes from the OSM file into the database

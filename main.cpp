@@ -14,7 +14,7 @@ int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
 
     // Initialize database manager
-    DatabaseManager dbMngr("OSMData", "oreste", "Muhirehonore@1*", "map(9).osm");
+    DatabaseManager dbMngr("OSMData", "oreste", "Muhirehonore@1*", "map(15).osm");
 
     // Create ConfigManager for config.json
     ConfigManager configManager("config.json");
