@@ -22,12 +22,15 @@ int main(int argc, char *argv[]) {
     // Get screen size and configure main window dimensions
     auto screen = QGuiApplication::primaryScreen();
     auto screenGeometry = screen->geometry();
-    cout << " Height: " << screenGeometry.height() << " , Width: " << screenGeometry.width() << endl;
     configManager.setMainWindowSize(screenGeometry);
 
 
     // Create the main widget, passing in the custom scene and setting it up
     auto mainWidget = new MainWidget();
+
+    qDebug()<<"Test function gives";
+    qDebug()<<DatabaseManager::getPositionByNodeId("9366172633");
+
     mainWidget->show();
 
     return app.exec();

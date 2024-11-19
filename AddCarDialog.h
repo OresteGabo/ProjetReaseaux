@@ -27,7 +27,7 @@ public:
     ~AddCarDialog();
 
 signals:
-    void carAdded(const Path& path, int speed, int frequency);
+    void carAdded(Path* path, int speed, int frequency);
 
 private slots:
     void onValidate();

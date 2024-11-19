@@ -1,3 +1,5 @@
+#ifndef DATABASE_MANAGER
+#define DATABASE_MANAGER
 #include <QString>
 #include <QSqlDatabase>
 #include <QSqlQuery>
@@ -11,6 +13,7 @@
 #include <QMap>
 #include "ConfigManager.h"
 #include <QDebug>
+#include "CustomScene.h"
 // Adjacency list type: a map where each node ID maps to a set of connected node IDs
 using AdjacencyList = QMap<QString, QSet<QString>>;
 class DatabaseManager {
@@ -70,6 +73,7 @@ public:
     static QString getWayNameById(const QString& wayId);
     static QVector<QString> getNodesOfWay(const QString& wayId);
     static QVector<QString> getNodesOfWaysWithName();
+    static QPointF getPositionByNodeId(QString id);
     //static QString getStreetNameByNode(const QString& nodeId);
     static QString getWayNameForNode(const QString &nodeId);
     static QVector<QString> getDrivableWaysNodesId(){
@@ -128,3 +132,5 @@ private:
     void createTables() ;
 
 };
+
+#endif

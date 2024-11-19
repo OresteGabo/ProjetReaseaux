@@ -1,17 +1,22 @@
 #include "Car.h"
+#include "DatabaseManager.h"
 #include <QGraphicsPathItem>
 #include <QPainterPath>
 #include <QTimer>
-Car::Car(const QString& id, const Path& path, QGraphicsScene* scene)
-        : carId(id), path(path), scene(scene) {
+#include <QtMath>
+Car::Car(const QString& id, Path* path, QGraphicsScene* scene)
+        : carId(id), path(path), scene(scene) ,nextDestinationNode(path->head->next),currentPosition(new QPointF(path->head->getPosition())){
     // Initialize car's graphical representation (a simple ellipse for now)
-    carItem = new QGraphicsEllipseItem(0, 0, 1, 1);
+    carItem = new QGraphicsEllipseItem(0, 0, 2, 2);
     carItem->setBrush(Qt::red);
+initialiseDesinationNodes();
+
 
     // Get initial and destination node coordinates
     double initialLat, initialLon, destLat, destLon;
-    auto initialNode = path.getHead();
+    auto initialNode = path->head;
     auto destinationNode = initialNode;
+    qDebug()<<"Current position after ini t is "<<path->head->getPosition().x()<<" , "<<path->head->getPosition().y();
 
     while (destinationNode && destinationNode->next) {
         destinationNode = destinationNode->next;
@@ -37,6 +42,9 @@ Car::Car(const QString& id, const Path& path, QGraphicsScene* scene)
     // Update the destination marker
     updateDestination(destinationPos);
 
+    nextDestinationNode=path->head->next;
+
+
     // Draw the path
     drawPath();
 
@@ -52,7 +60,7 @@ void Car::updateDestination(const QPointF& destinationPos) {
         scene->removeItem(destinationItem);
         delete destinationItem;
     }
-    destinationItem = new QGraphicsEllipseItem(destinationPos.x() - 5, destinationPos.y() - 5, 10, 10);
+    destinationItem = new QGraphicsEllipseItem(destinationPos.x() - 2, destinationPos.y() - 2, 4, 4);
     destinationItem->setBrush(Qt::red);
     scene->addItem(destinationItem);
 }
@@ -84,7 +92,7 @@ void Car::drawPath() {
     }
 
     QPainterPath painterPath;
-    auto currentNode = path.getHead();
+    auto currentNode = path->head;
     double lat, lon;
 
     // Get the coordinates of the first node
@@ -96,6 +104,7 @@ void Car::drawPath() {
         while (currentNode) {
             if (getNodeCoordinates(currentNode->nodeId, lat, lon)) {
                 QPointF point = CustomScene::latLonToXY(lat, lon);
+
                 painterPath.lineTo(point);
             }
             currentNode = currentNode->next;
@@ -103,58 +112,99 @@ void Car::drawPath() {
 
         // Create the QGraphicsPathItem and add it to the scene
         pathItem = new QGraphicsPathItem(painterPath);
-        pathItem->setPen(QPen(Qt::blue, 2));
+        pathItem->setPen(QPen(Qt::blue, 0.5));
         scene->addItem(pathItem);
     }
 }
-void Car::moveAlongPath() {
-    if (!path.getHead()) {
-        qDebug() << "Path is empty. Cannot move the car.";
+/*
+void Car::updatePosition(qreal elapsedTime,QVector<Car*> allCars) {
+    if(!path.nextDestinationNode){
+        qDebug()<<"No destination";
         return;
-    }else{
-        qDebug()<<"Head is not empty";
     }
 
-    auto currentNode = path.getHead();
-    qDebug()<<"current node (head)";
-    auto timer = new QTimer(this);
-    qDebug()<<"QTimerObject";
-    timer->setInterval(1000); // Set the interval for each move (1 second for demonstration)
-    qDebug()<<"Set interval to 1000";
-    // Lambda function to move the car to the next node
-    QObject::connect(timer, &QTimer::timeout, [this, timer, &currentNode]() mutable {
-        if (!currentNode) {
-            timer->stop();
-            timer->deleteLater(); // Clean up the timer
-            qDebug() << "Reached the end of the path.";
-            return;
+
+    // Update the position based on the elapsed time and speed
+    double nextY=DatabaseManager::getPositionByNodeId(path.nextDestinationNode->nodeId).y();
+    double nextX=DatabaseManager::getPositionByNodeId(path.nextDestinationNode->nodeId).x();
+
+    double x=path.currentPosition.x();
+    double y=path.currentPosition.y();
+    qreal deltaX = speed * elapsedTime * qCos(qAtan2(nextY - y, nextX - x));
+    qreal deltaY = speed * elapsedTime * qSin(qAtan2(nextY - y, nextX - x));
+
+
+    DatabaseManager::getPositionByNodeId("");
+    path.currentPosition += QPointF(deltaX, deltaY);
+    qDebug()<<"Current position is ";
+    qDebug()<<path.currentPosition;
+
+    // Check if the car has reached the current destination node
+    qreal distance = (path.currentPosition - DatabaseManager::getPositionByNodeId(path.nextDestinationNode->nodeId)).manhattanLength();
+    if (distance <= 1.0) {
+        // If the distance is small enough, consider it reached and set the next destination node
+        path.nextDestinationNode=path.nextDestinationNode->next;
+        if (!path.nextDestinationNode) {
+            // If there's no next destination, stop the car
+            speed = 0.0;
         }
-        qDebug() << "CurrentNode exist";
-        // Get the coordinates of the current node
-        double lat, lon;
-        if (!getNodeCoordinates(currentNode->nodeId, lat, lon)) {
-            qDebug() << "Failed to get coordinates for node:" << currentNode->nodeId;
-            timer->stop();
-            return;
+    }
+
+    updateConnectedCars(allCars);
+}
+*/
+
+void Car::updatePosition(qreal elapsedTime, QVector<Car*> allCars) {
+    speed=100;
+    frequence=30;
+    if (!nextDestinationNode) {
+        return;  // No destination path set, do nothing
+    }
+
+    // Update the position based on the elapsed time and speed
+    auto pos=DatabaseManager::getPositionByNodeId(nextDestinationNode->nodeId);
+    qreal deltaX = speed * elapsedTime * qCos(qAtan2(pos.y() - currentPosition->y(), pos.x() - currentPosition->x()));
+    qreal deltaY = speed * elapsedTime * qSin(qAtan2(pos.y() - currentPosition->y(), pos.x() - currentPosition->x()));
+    qDebug()<<"delta x:"<<deltaX<<" deltaY: "<<deltaY;
+    qDebug()<<"currentPosition is "<<*currentPosition;
+    //*currentPosition += QPointF(deltaX, deltaY);
+    currentPosition=new QPointF(currentPosition->x()+(deltaX*10000),currentPosition->y()+(deltaY*10000));
+    qDebug()<<"currentPosition is "<<*currentPosition;
+
+    // Check if the car has reached the current destination node
+    qreal distance = (*currentPosition - (DatabaseManager::getPositionByNodeId(nextDestinationNode->nodeId))).manhattanLength();
+    if (distance <= 1.0) {
+        // If the distance is small enough, consider it reached and set the next destination node
+        nextDestinationNode = nextDestinationNode->next;
+        if (!nextDestinationNode) {
+            // If there's no next destination, stop the car
+            speed = 0.0;
         }
-        qDebug() << "get coordinates for node";
-        // Convert lat/lon to scene coordinates
-        QPointF pos = CustomScene::latLonToXY(lat, lon);
+    }
 
-        // Move the car to the current position
-        setPosition(pos);
-        qDebug() << "Car moved to node:" << currentNode->nodeId << "Position:" << pos;
+    setPosition(*currentPosition);
+    updateConnectedCars(allCars);
 
-        // Move to the next node in the linked list
-        currentNode = currentNode->next;
+}
 
-        // Stop if we reach the end of the path
-        if (!currentNode) {
-            qDebug() << "Car reached the destination.";
-            timer->stop();
+
+
+void Car::updateConnectedCars(QVector<Car*> allCars) {
+    connectedCars.clear();
+    for (const Car* otherCar : allCars) {
+        if (otherCar != this && connectedTo( otherCar)) {
+            connectedCars.push_back(const_cast<Car*>(otherCar));
         }
-    });
+    }
+}
+bool Car::connectedTo(const Car *car) const {
+    QPointF *position2 = car->currentPosition;//car->getPosition();
+    double radius1=frequence;
+    double radius2 = car->frequence;
 
-    // Start the timer
-    timer->start();
+    // Calculate the distance between the centers of the circles
+    double distance= std::hypot(currentPosition->x()-position2->x(),currentPosition->y()-position2->y());
+    // Determine if the circles intersect based on their radii and distance
+    //return distance < (getRadius() + radius2);
+    return radius1 > distance || radius2> distance;
 }

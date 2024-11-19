@@ -2,6 +2,7 @@
   /home/oreste/CLionProjects/GraphicsInQt/cmake-build-debug/GraphicsInQt_autogen/moc_predefs.h \
   /home/oreste/CLionProjects/GraphicsInQt/ConfigManager.h \
   /home/oreste/CLionProjects/GraphicsInQt/CustomScene.h \
+  /home/oreste/CLionProjects/GraphicsInQt/DatabaseManager.h \
   /home/oreste/CLionProjects/GraphicsInQt/Node.h \
   /home/oreste/CLionProjects/GraphicsInQt/Path.h \
   /home/oreste/CLionProjects/GraphicsInQt/PathNode.h \
@@ -244,6 +245,7 @@
   /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs.h \
+  /usr/include/x86_64-linux-gnu/qt5/QtCore/QDateTime \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/QDebug \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/QFile \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/QJsonDocument \
@@ -260,6 +262,7 @@
   /usr/include/x86_64-linux-gnu/qt5/QtCore/QSizeF \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/QString \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/QVector \
+  /usr/include/x86_64-linux-gnu/qt5/QtCore/QXmlStreamReader \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/qabstractitemmodel.h \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/qalgorithms.h \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/qarraydata.h \
@@ -340,6 +343,7 @@
   /usr/include/x86_64-linux-gnu/qt5/QtCore/qvarlengtharray.h \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/qvector.h \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/qversiontagging.h \
+  /usr/include/x86_64-linux-gnu/qt5/QtCore/qxmlstream.h \
   /usr/include/x86_64-linux-gnu/qt5/QtGui/QGuiApplication \
   /usr/include/x86_64-linux-gnu/qt5/QtGui/QPainter \
   /usr/include/x86_64-linux-gnu/qt5/QtGui/QPolygonF \

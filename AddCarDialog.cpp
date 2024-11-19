@@ -100,10 +100,10 @@ void AddCarDialog::onGeneratePath() {
 
     // Build the adjacency list from the database
     AdjacencyList adjList = DatabaseManager::buildAdjacencyList();
-    qDebug()<<"Debug text1";
+
     //Create the Path object
     Path pathFinder;
-    qDebug()<<"Debug text2";
+
     bool pathExists = pathFinder.generatePath(initialNodeId, destinationNodeId, adjList);
 
     if (pathExists) {
@@ -126,8 +126,8 @@ void AddCarDialog::onValidate() {
 
     QString initialNodeId = initialAddressComboBox->currentData().toString();
     QString destinationNodeId = destinationComboBox->currentData().toString();
-    Path path=Path();
-    path.generatePath(initialNodeId,destinationNodeId,DatabaseManager::buildAdjacencyList());
+    Path *path=new Path();
+    path->generatePath(initialNodeId,destinationNodeId,DatabaseManager::buildAdjacencyList());
     int speed = speedLineEdit->text().toInt();
     int frequency = frequencyLineEdit->text().toInt();
 

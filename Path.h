@@ -26,16 +26,14 @@ public:
     // Print the path for debugging
     void printPath() const;
 
-    // Get the head of the path (start node)
-    auto getHead() const { return head; }
-    auto getTail()const { return tail; }
     PathNode* getNodeAt(int index) const;
 
 
-    int size()const;
-    PathNode* nextDestinationNode;
 
-private:
+    int size()const;
+
+
+
     PathNode* head;   // Pointer to the head of the linked list
     PathNode* tail;   // Pointer to the tail of the linked list
 

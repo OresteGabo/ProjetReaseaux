@@ -1,14 +1,6 @@
 #include "MainWidget.h"
-#include "CustomGraphicsView.h"
-#include "ConfigManager.h"
-#include <QFileDialog>
-#include <QMessageBox>
-#include <QGuiApplication>
-#include "CustomScene.h"
-#include "AddCarDialog.h"
-#include "Node.h"
-#include "Path.h"
-#include "DatabaseManager.h"
+
+//#include "DatabaseManager.h"
 
 MainWidget::MainWidget(QWidget *parent) : QWidget(parent) {
 
@@ -36,6 +28,9 @@ MainWidget::MainWidget(QWidget *parent) : QWidget(parent) {
     changeDataButton = new QPushButton("Change Data");
     addCarButton = new QPushButton("Add Car");
 
+    displayInfo = new QPushButton("Display infor");
+    connect(displayInfo, &QPushButton::clicked, this, &MainWidget::onDisplayInfo);
+
 
 
 
@@ -58,14 +53,25 @@ MainWidget::MainWidget(QWidget *parent) : QWidget(parent) {
     // Layout for debug area and buttons
     auto debugLayout = new QVBoxLayout();
     debugLayout->addWidget(debugTextArea, 1);  // Stretch factor set to 1 for text area
-    //runButton=new QPushButton("run");
+
     debugLayout->addWidget(runButton);
+    debugLayout->addWidget(displayInfo);
     debugLayout->addLayout(buttonsLayout, 0);  // Stretch factor set to 0 for buttons layout
 
     // Main layout
     auto mainLayout = new QHBoxLayout(this);
     mainLayout->addWidget(graphicsView, 3);  // 3:7 ratio for graphicsView vs debug area
     mainLayout->addLayout(debugLayout, 1);   // Adjust ratios as needed
+
+
+
+
+
+
+
+    animationTimer = new QTimer(this);
+    connect(animationTimer, &QTimer::timeout, this, &MainWidget::updateAnimation);
+
 
     setLayout(mainLayout);
     setFixedSize(width-50,height-100);
@@ -76,7 +82,14 @@ void MainWidget::clearDebugText() {
 
 }
 
+void MainWidget::onDisplayInfo() {
+    for(auto car:cars){
+        //debugTextArea->append( "Pos("+QString::number(car->getCurrentPosition().x())+" "+QString::number(car->getCurrentPosition().x())+");");
+        debugTextArea->append(""+QString::number(car->currentPosition->x())+","+QString::number(car->currentPosition->y())+";");
+        debugTextArea->append("Speed: " + QString::number(car->speed) + "; Frequency: " + QString::number(car->frequence) +";");
 
+    }
+}
 void MainWidget::changeData() {
     QString filePath = QFileDialog::getOpenFileName(this, "Open OSM File", "", "OSM Files (*.osm)");
     if (!filePath.isEmpty()) {
@@ -89,17 +102,16 @@ void MainWidget::addCarDialog() {
     auto dialog = new AddCarDialog(graphicsView->scene());
 
     // Connect the signal from AddCarDialog with the selected node IDs
-    connect(dialog, &AddCarDialog::carAdded, [this](const Path& path, int speed, int frequency) {
+    connect(dialog, &AddCarDialog::carAdded, [this]( Path* path, int speed, int frequency) {
         // Create a new Car with the generated Path
         QString carId = QString::number(cars.size() + 1);
         auto newCar = new Car(carId, path, graphicsView->scene());
+        newCar->nextDestinationNode=newCar->path->head;
+        if(newCar->nextDestinationNode->next!=nullptr){
+            newCar->nextDestinationNode=newCar->nextDestinationNode->next;
+        }
 
-        debugTextArea->append( "Car created with ID:"+ carId);
-        debugTextArea->append( " Initial node ID:" +path.getHead()->nodeId);
-        debugTextArea->append( " Destination node ID:" + path.getTail()->nodeId);
-        debugTextArea->append(" Number of nodes: "+QString::number(path.size()));
-
-
+        newCar->display(debugTextArea);
         // Add the new Car to the list of cars
         cars.push_back(newCar);
     });
@@ -110,11 +122,11 @@ void MainWidget::addCarDialog() {
 void MainWidget::addCar(const QString& initialNodeId, const QString& destinationNodeId) {
     // Create adjacency list from the database
     AdjacencyList adjList = DatabaseManager::buildAdjacencyList();
-    Path pathFinder;
+    Path *pathFinder=new Path();
 
     // Generate the path
-    if (pathFinder.generatePath(initialNodeId, destinationNodeId, adjList)) {
-        pathFinder.printPath();
+    if (pathFinder->generatePath(initialNodeId, destinationNodeId, adjList)) {
+        pathFinder->printPath();
 
         // Create a new car with the generated path
         QString carId = QString::number(cars.size() + 1);
@@ -152,11 +164,64 @@ void MainWidget::addCar() {
 }
 
 void MainWidget::onRunButtonClicked() {
-    debugTextArea->append("Starting car movement...");
-    //movementTimer->start(50); // Adjust the interval as needed
+    /*debugTextArea->append("Starting car movement...");
+    movementTimer->start(50); // Adjust the interval as needed
     for(auto car:cars){
-        //car->moveAlongPath();
+        car->moveAlongPath();
+    }*/
+    if (animationTimer->isActive()) {
+        // If the animation is active, stop it
+        animationTimer->stop();
+        runButton->setText("Lancer Simulation");
+        //logMessage("\t>Simulation arretée");
+    } else {
+        // If the animation is not active, start it
+        animationTimer->start(16);  // Update approximately every 16 milliseconds (60 frames per second)
+        runButton->setText("Stop Simulation");
+        //logMessage("\t>Simulation lancée");
+    }
+}
+void MainWidget::updateAnimation() {
+    // Update the animation progress based on the elapsed time
+    qreal elapsedTime = animationTimer->interval() / qreal(animationDuration);
+
+    updateCarPositions(elapsedTime);
+
+    if (animationTimer->isActive()) {
+        update();
+    } else {
+        debugTextArea->setText("Lancer Simulation");
     }
 }
 
 
+
+void MainWidget::toggleSimulation() {
+    if (animationTimer->isActive()) {
+        // If the animation is active, stop it
+        animationTimer->stop();
+        debugTextArea->setText("Lancer Simulation");
+        //logMessage("\t>Simulation arretée");
+    } else {
+        // If the animation is not active, start it
+        animationTimer->start(16);  // Update approximately every 16 milliseconds (60 frames per second)
+        debugTextArea->setText("Stop Simulation");
+        //logMessage("\t>Simulation lancée");
+    }
+}
+
+
+//From App class
+void MainWidget::updateCarPositions(qreal elapsedTime) {
+    for (Car* car : cars) {
+        car->updatePosition(elapsedTime,cars);
+    }
+    updateConnectedCars();
+}
+
+void MainWidget::updateConnectedCars() {
+    for(Car* car:cars){
+        car->updateConnectedCars(cars);
+        //qDebug()<<"Connected cars size is "<<car->getConnectedCars().size();
+    }
+}

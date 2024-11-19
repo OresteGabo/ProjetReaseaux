@@ -22,7 +22,7 @@ DatabaseManager::DatabaseManager(
 
         QSet<QString> neighbors = it.value();
 
-        qDebug() << "Node" << node << "is connected to:" << neighbors;
+        //qDebug() << "Node" << node << "is connected to:" << neighbors;
     }
 
 
@@ -501,6 +501,25 @@ QString DatabaseManager::getWayNameForNode(const QString &nodeId) {
 
     return QString(); // Return an empty string if no result is found
 }
+
+QPointF DatabaseManager::getPositionByNodeId(QString nodeId){
+    QSqlQuery sql;
+    QString quertString=R"(
+        select lat,lon from nodes where id = :nodeId
+    )";
+    sql.prepare(quertString);
+    sql.bindValue(":nodeId", nodeId);
+    if(sql.exec()){
+        if (sql.next()) {
+            double lat = sql.value(0).toDouble();
+            double lon = sql.value(1).toDouble();
+            return CustomScene::latLonToXY(lat, lon);
+        }
+    }
+    qDebug()<<"The pos of node "+nodeId+" is not found";
+    return {5,5};
+}
+
 /*
 QString DatabaseManager::getStreetNameByNode(const QString &nodeId) {
     //select value from tags where element_type ='node' and tag_key ='addr:street' and element_id='10121250337' ;
