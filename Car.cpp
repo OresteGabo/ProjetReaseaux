@@ -1,76 +1,160 @@
-//
-// Created by oreste on 29/10/24.
-//
-
 #include "Car.h"
-#include "PathNode.h"
-#include<QRandomGenerator>
-#include <QBrush>
-#include <QtMath>
-/*
-Car::Car(int id,PathNode* destinationPathHead, double speed,const QPixmap& car,double frequence) :
+#include <QGraphicsPathItem>
+#include <QPainterPath>
+#include <QTimer>
+Car::Car(const QString& id, const Path& path, QGraphicsScene* scene)
+        : carId(id), path(path), scene(scene) {
+    // Initialize car's graphical representation (a simple ellipse for now)
+    carItem = new QGraphicsEllipseItem(0, 0, 1, 1);
+    carItem->setBrush(Qt::red);
 
-        speed(speed), destinationPathHead(destinationPathHead),
-        position(destinationPathHead->getNode()->toPoint()),
-        carImage(car),
-        frequence(frequence)
-{
-    carImage = carImage.scaledToWidth(30);
-    // Set the initial position based on the starting destination node
-    if (destinationPathHead) {
-        position = QPointF(destinationPathHead->getNode()->x(), destinationPathHead->getNode()->y());
-        nextDestinationNode = destinationPathHead->next;
-        qDebug()<<"The car initialised with path adress (" << destinationPathHead->getNode()->x()<<","<<destinationPathHead->getNode()->y()<<")";
+    // Get initial and destination node coordinates
+    double initialLat, initialLon, destLat, destLon;
+    auto initialNode = path.getHead();
+    auto destinationNode = initialNode;
+
+    while (destinationNode && destinationNode->next) {
+        destinationNode = destinationNode->next;
+    }
+
+    if (!initialNode || !destinationNode ||
+        !getNodeCoordinates(initialNode->nodeId, initialLat, initialLon) ||
+        !getNodeCoordinates(destinationNode->nodeId, destLat, destLon)) {
+        qDebug() << "Error: Failed to get node coordinates from database.";
+        return;
+    }
+
+    // Convert lat/lon to scene coordinates using CustomScene::latLonToXY
+    QPointF initialPos = CustomScene::latLonToXY(initialLat, initialLon);
+    QPointF destinationPos = CustomScene::latLonToXY(destLat, destLon);
+
+    // Set the initial position of the car item
+    carItem->setPos(initialPos);
+
+    // Add car item to the scene
+    scene->addItem(carItem);
+
+    // Update the destination marker
+    updateDestination(destinationPos);
+
+    // Draw the path
+    drawPath();
+
+    qDebug() << "Car created with ID:" << carId << "Initial Position:" << initialPos << "Destination:" << destinationPos;
+}
+
+void Car::setPosition(const QPointF& position) {
+    carItem->setPos(position);
+}
+
+void Car::updateDestination(const QPointF& destinationPos) {
+    if (destinationItem) {
+        scene->removeItem(destinationItem);
+        delete destinationItem;
+    }
+    destinationItem = new QGraphicsEllipseItem(destinationPos.x() - 5, destinationPos.y() - 5, 10, 10);
+    destinationItem->setBrush(Qt::red);
+    scene->addItem(destinationItem);
+}
+
+bool Car::getNodeCoordinates(const QString& nodeId, double& lat, double& lon) {
+    QSqlQuery query;
+    query.prepare("SELECT lat, lon FROM nodes WHERE id = :nodeId");
+    query.bindValue(":nodeId", nodeId);
+
+    if (!query.exec()) {
+        qDebug() << "Database query error:" << query.lastError().text();
+        return false;
+    }
+
+    if (query.next()) {
+        lat = query.value(0).toDouble();
+        lon = query.value(1).toDouble();
+        return true;
     } else {
-        // If no starting node is provided, set an initial position at (0, 0)
-        position = QPointF(0, 0);
-        qDebug()<<"The car initialised with 0,0";
-        nextDestinationNode = nullptr;
+        qDebug() << "Node ID not found in database:" << nodeId;
+        return false;
     }
-
 }
-void Car::updatePosition(qreal elapsedTime,QVector<Car*> allCars) {
-    if (!nextDestinationNode) {
-        return;  // No destination path set, do nothing
+
+void Car::drawPath() {
+    if (pathItem) {
+        scene->removeItem(pathItem);
+        delete pathItem;
     }
 
-    // Update the position based on the elapsed time and speed
-    qreal deltaX = speed * elapsedTime * qCos(qAtan2(nextDestinationNode->getNode()->y() - position.y(), nextDestinationNode->getNode()->x() - position.x()));
-    qreal deltaY = speed * elapsedTime * qSin(qAtan2(nextDestinationNode->getNode()->y() - position.y(), nextDestinationNode->getNode()->x() - position.x()));
+    QPainterPath painterPath;
+    auto currentNode = path.getHead();
+    double lat, lon;
 
-    position += QPointF(deltaX, deltaY);
+    // Get the coordinates of the first node
+    if (currentNode && getNodeCoordinates(currentNode->nodeId, lat, lon)) {
+        QPointF startPoint = CustomScene::latLonToXY(lat, lon);
+        painterPath.moveTo(startPoint);
 
-    // Check if the car has reached the current destination node
-    qreal distance =0.1; // (position - *(nextDestinationNode->getNode())).manhattanLength();
-    if (distance <= 1.0) {
-        // If the distance is small enough, consider it reached and set the next destination node
-        nextDestinationNode = nextDestinationNode->next;
-        if (!nextDestinationNode) {
-            // If there's no next destination, stop the car
-            speed = 0.0;
+        // Iterate through the path and add lines
+        while (currentNode) {
+            if (getNodeCoordinates(currentNode->nodeId, lat, lon)) {
+                QPointF point = CustomScene::latLonToXY(lat, lon);
+                painterPath.lineTo(point);
+            }
+            currentNode = currentNode->next;
         }
+
+        // Create the QGraphicsPathItem and add it to the scene
+        pathItem = new QGraphicsPathItem(painterPath);
+        pathItem->setPen(QPen(Qt::blue, 2));
+        scene->addItem(pathItem);
+    }
+}
+void Car::moveAlongPath() {
+    if (!path.getHead()) {
+        qDebug() << "Path is empty. Cannot move the car.";
+        return;
+    }else{
+        qDebug()<<"Head is not empty";
     }
 
-    updateConnectedCars(allCars);
-}
-bool Car::connectedTo(const Car *car) const {
-    QPointF position2 = car->getPosition();
-    double radius1=frequence;
-    double radius2 = car->getFrequence();
-
-    // Calculate the distance between the centers of the circles
-    double distance = std::hypot(position.x() - position2.x(), position.y() - position2.y());
-
-    // Determine if the circles intersect based on their radii and distance
-    //return distance < (getRadius() + radius2);
-    return radius1 > distance || radius2> distance;
-}
-void Car::updateConnectedCars(QVector<Car*> allCars) {
-    connectedCars.clear();
-    for (const Car* otherCar : allCars) {
-        if (otherCar != this && connectedTo( otherCar)) {
-            connectedCars.push_back(const_cast<Car*>(otherCar));
+    auto currentNode = path.getHead();
+    qDebug()<<"current node (head)";
+    auto timer = new QTimer(this);
+    qDebug()<<"QTimerObject";
+    timer->setInterval(1000); // Set the interval for each move (1 second for demonstration)
+    qDebug()<<"Set interval to 1000";
+    // Lambda function to move the car to the next node
+    QObject::connect(timer, &QTimer::timeout, [this, timer, &currentNode]() mutable {
+        if (!currentNode) {
+            timer->stop();
+            timer->deleteLater(); // Clean up the timer
+            qDebug() << "Reached the end of the path.";
+            return;
         }
-    }
+        qDebug() << "CurrentNode exist";
+        // Get the coordinates of the current node
+        double lat, lon;
+        if (!getNodeCoordinates(currentNode->nodeId, lat, lon)) {
+            qDebug() << "Failed to get coordinates for node:" << currentNode->nodeId;
+            timer->stop();
+            return;
+        }
+        qDebug() << "get coordinates for node";
+        // Convert lat/lon to scene coordinates
+        QPointF pos = CustomScene::latLonToXY(lat, lon);
+
+        // Move the car to the current position
+        setPosition(pos);
+        qDebug() << "Car moved to node:" << currentNode->nodeId << "Position:" << pos;
+
+        // Move to the next node in the linked list
+        currentNode = currentNode->next;
+
+        // Stop if we reach the end of the path
+        if (!currentNode) {
+            qDebug() << "Car reached the destination.";
+            timer->stop();
+        }
+    });
+
+    // Start the timer
+    timer->start();
 }
-*/

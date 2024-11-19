@@ -8,7 +8,8 @@
 #include "AddCarDialog.h"
 #include "Node.h"
 #include "Path.h"
-#include "djkstra.h"
+#include "DatabaseManager.h"
+
 MainWidget::MainWidget(QWidget *parent) : QWidget(parent) {
 
     QJsonObject jsonObj= ConfigManager::loadJsonFile();
@@ -28,13 +29,21 @@ MainWidget::MainWidget(QWidget *parent) : QWidget(parent) {
 
     // Initialize buttons
     clearButton = new QPushButton("Clear");
+    runButton = new QPushButton("Start", this);
+
+    connect(runButton, &QPushButton::clicked, this, &MainWidget::onRunButtonClicked);
+
     changeDataButton = new QPushButton("Change Data");
     addCarButton = new QPushButton("Add Car");
 
+
+
+
     // Connect button slots
     connect(clearButton, &QPushButton::clicked, this, &MainWidget::clearDebugText);
+    //connect(runButton, &QPushButton::clicked, this, &MainWidget::onRun);
     connect(changeDataButton, &QPushButton::clicked, this, &MainWidget::changeData);
-    connect(addCarButton, &QPushButton::clicked, this, &MainWidget::addCar);
+    connect(addCarButton, &QPushButton::clicked, this, &MainWidget::addCarDialog);
 
     // Layout for the buttons
     auto buttonLayout = new QHBoxLayout();
@@ -49,6 +58,8 @@ MainWidget::MainWidget(QWidget *parent) : QWidget(parent) {
     // Layout for debug area and buttons
     auto debugLayout = new QVBoxLayout();
     debugLayout->addWidget(debugTextArea, 1);  // Stretch factor set to 1 for text area
+    //runButton=new QPushButton("run");
+    debugLayout->addWidget(runButton);
     debugLayout->addLayout(buttonsLayout, 0);  // Stretch factor set to 0 for buttons layout
 
     // Main layout
@@ -62,7 +73,9 @@ MainWidget::MainWidget(QWidget *parent) : QWidget(parent) {
 
 void MainWidget::clearDebugText() {
     debugTextArea->clear();
+
 }
+
 
 void MainWidget::changeData() {
     QString filePath = QFileDialog::getOpenFileName(this, "Open OSM File", "", "OSM Files (*.osm)");
@@ -71,62 +84,79 @@ void MainWidget::changeData() {
         debugTextArea->append("Loaded file: " + filePath);
     }
 }
-/*
-void MainWidget::addCar() {
-    auto dialog = new AddCarDialog(graphicsView->scene());
 
-    connect(dialog, &AddCarDialog::carAdded, [this](const QPointF &initial, const QPointF &destination, int speed, int frequency) {
-        debugTextArea->append(QString("Car added: From (%1, %2) to (%3, %4) with speed %5 and frequency %6")
-                                      .arg(initial.x()).arg(initial.y())
-                                      .arg(destination.x()).arg(destination.y())
-                                      .arg(speed).arg(frequency));
-
-        // Create a new Car and add it to the vector
-        QString initialNodeId = QString::number(initial.x()) + "," + QString::number(initial.y());
-        QString destinationNodeId = QString::number(destination.x()) + "," + QString::number(destination.y());
-
-        // Create new car, pass the scene
-        auto newCar = new Car(QString::number(qrand()), initialNodeId, destinationNodeId, graphicsView->scene());
-        qDebug()<<"Initial node used is "<<initialNodeId << " and destination node used is " <<destinationNodeId;
-        cars.push_back(newCar);
-    });
-
-    dialog->exec();
-}
-*/
-void MainWidget::addCar() {
+void MainWidget::addCarDialog() {
     auto dialog = new AddCarDialog(graphicsView->scene());
 
     // Connect the signal from AddCarDialog with the selected node IDs
-    connect(dialog, &AddCarDialog::carAdded, [this](const QString &initialNodeId, const QString &destinationNodeId, int speed, int frequency){
-        debugTextArea->append(QString("Car added: From node %1 to node %2 with speed %3 and frequency %4")
-                                      .arg(initialNodeId)
-                                      .arg(destinationNodeId)
-                                      .arg(speed)
-                                      .arg(frequency));
+    connect(dialog, &AddCarDialog::carAdded, [this](const Path& path, int speed, int frequency) {
+        // Create a new Car with the generated Path
+        QString carId = QString::number(cars.size() + 1);
+        auto newCar = new Car(carId, path, graphicsView->scene());
 
-        // Create a new Car using the node IDs from the database
-        auto newCar = new Car(QString::number(qrand()), initialNodeId, destinationNodeId, graphicsView->scene());
-        qDebug() << "Initial node ID used:" << initialNodeId << ", Destination node ID used:" << destinationNodeId;
+        debugTextArea->append( "Car created with ID:"+ carId);
+        debugTextArea->append( " Initial node ID:" +path.getHead()->nodeId);
+        debugTextArea->append( " Destination node ID:" + path.getTail()->nodeId);
+        debugTextArea->append(" Number of nodes: "+QString::number(path.size()));
 
+
+        // Add the new Car to the list of cars
         cars.push_back(newCar);
     });
 
     dialog->exec();
 }
-void MainWidget::generatePath(Node *initialNode, Node *destinationNode) {
-    debugTextArea->append("Generating shortest path...");
 
-    // Call the Dijkstra's function
-    Path *path = generateShortestPath(initialNode, destinationNode, nodes, adjacencyList);
+void MainWidget::addCar(const QString& initialNodeId, const QString& destinationNodeId) {
+    // Create adjacency list from the database
+    AdjacencyList adjList = DatabaseManager::buildAdjacencyList();
+    Path pathFinder;
 
-    if (path) {
-        debugTextArea->append("Path generated successfully.");
-        paths.push_back(path); // Store the path
+    // Generate the path
+    if (pathFinder.generatePath(initialNodeId, destinationNodeId, adjList)) {
+        pathFinder.printPath();
 
-        // Draw the path using CustomScene
-        path->draw(dynamic_cast<CustomScene *>(graphicsView->scene()));
+        // Create a new car with the generated path
+        QString carId = QString::number(cars.size() + 1);
+        Car* newCar = new Car(carId, pathFinder, graphicsView->scene());
+        cars.push_back(newCar);
     } else {
-        debugTextArea->append("No path found.");
+        qDebug() << "Failed to generate path for the car.";
     }
 }
+
+void MainWidget::addCar() {
+    // Create adjacency list from the database
+    AdjacencyList adjList = DatabaseManager::buildAdjacencyList();
+
+    // Get random nodes from the adjacency list
+    QStringList nodes = adjList.keys();
+    if (nodes.size() < 2) {
+        qDebug() << "Not enough nodes to select random locations.";
+        return;
+    }
+
+    int initialIndex = QRandomGenerator::global()->bounded(nodes.size());
+    int destinationIndex;
+    do {
+        destinationIndex = QRandomGenerator::global()->bounded(nodes.size());
+    } while (initialIndex == destinationIndex);
+
+    QString initialNodeId = nodes[initialIndex];
+    QString destinationNodeId = nodes[destinationIndex];
+
+    qDebug() << "Randomly selected nodes:" << initialNodeId << "to" << destinationNodeId;
+
+    // Use the overloaded addCar function with the selected nodes
+    addCar(initialNodeId, destinationNodeId);
+}
+
+void MainWidget::onRunButtonClicked() {
+    debugTextArea->append("Starting car movement...");
+    //movementTimer->start(50); // Adjust the interval as needed
+    for(auto car:cars){
+        //car->moveAlongPath();
+    }
+}
+
+

@@ -7,6 +7,10 @@
 #include <QPushButton>
 #include <QTextEdit>
 #include <QFileDialog>
+#include <QRandomGenerator>
+#include <QTimer>
+#include <QSlider>
+#include <QPlainTextEdit>
 #include "CustomGraphicsView.h"
 #include "Car.h"
 #include "Node.h"
@@ -17,14 +21,20 @@ Q_OBJECT
 
 public:
     MainWidget(QWidget *parent = nullptr);
-void generatePath(Node* initialNode, Node* destinationNode);
+    void addCar();
+    void addCar(const QString& initialNodeId, const QString& destinationNodeId);
 signals:
-    emit  void carAdded(const QString &initial, const QString &destination, int speed, int frequency);
+    emit  void carAdded(const Path&, int speed, int frequency);
+
 
 private slots:
     void clearDebugText();
     void changeData();
-    void addCar();
+    void addCarDialog();
+
+public slots:
+    void onRunButtonClicked();
+
 
 private:
     QTextEdit *debugTextArea;
@@ -32,11 +42,13 @@ private:
     QPushButton *clearButton;
     QPushButton *changeDataButton;
     QPushButton *addCarButton;
-    std::vector<Car*> cars;
+    QVector<Car*> cars;
 
-    QMap<QString, Node*> nodes;              // Stores all nodes by ID
-    QMap<QString, QList<Node*>> adjacencyList; // Adjacency list for graph
-    QVector<Path*> paths;
+    QPushButton* runButton;
+    QTimer* movementTimer; // Timer for car movement
+
+
+
 };
 
 #endif // MAINWIDGET_H

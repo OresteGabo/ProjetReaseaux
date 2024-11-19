@@ -11,7 +11,8 @@
 #include <QMap>
 #include "ConfigManager.h"
 #include <QDebug>
-
+// Adjacency list type: a map where each node ID maps to a set of connected node IDs
+using AdjacencyList = QMap<QString, QSet<QString>>;
 class DatabaseManager {
 public:
 
@@ -61,23 +62,30 @@ public:
 
         return true;
     }
+    static AdjacencyList buildAdjacencyList();
 
-private:
 
-    void truncateAllTables() {
-        QSqlQuery query;
-        QStringList tables = {"relations_members","ways_nodes", "tags","relations","ways","address","nodes"};
 
-        db.transaction();
-        for (const auto &tableName : tables) {
-            if(query.exec("DROP TABLE " + tableName)){
-                qDebug()<<"Table dropped "<<tableName;
+    static QVector<QString> getDrivableWaysIds();
+    static QString getWayNameById(const QString& wayId);
+    static QVector<QString> getNodesOfWay(const QString& wayId);
+    static QVector<QString> getNodesOfWaysWithName();
+    //static QString getStreetNameByNode(const QString& nodeId);
+    static QString getWayNameForNode(const QString &nodeId);
+    static QVector<QString> getDrivableWaysNodesId(){
+        QSet<QString> nodesId;
+        for(auto wayId: getDrivableWaysIds()){
+            auto nodes= getNodesOfWay(wayId);
+            for(auto node:nodes){
+                nodesId.insert(node);
             }
         }
-        db.commit();
+        QVector<QString> result{};
+        for(auto nodeId:nodesId){
+            result.push_back(nodeId);
+        }
+        return result;
     }
-    void createTables() ;
-
 
 
     QSqlDatabase db;
@@ -102,5 +110,21 @@ private:
     static bool parseWays(QXmlStreamReader &xml, QSqlQuery &query);
     void markJunctionNodes();
     QMap<QString, QString> getWayTags(const QString &wayId);
+
+private:
+
+    void truncateAllTables() {
+        QSqlQuery query;
+        QStringList tables = {"relations_members","ways_nodes", "tags","relations","ways","address","nodes"};
+
+        db.transaction();
+        for (const auto &tableName : tables) {
+            if(query.exec("DROP TABLE " + tableName)){
+                qDebug()<<"Table dropped "<<tableName;
+            }
+        }
+        db.commit();
+    }
+    void createTables() ;
 
 };

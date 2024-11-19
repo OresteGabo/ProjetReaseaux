@@ -2,7 +2,10 @@
 // Created by oreste on 28/10/24.
 //
 
+
+
 #include "DatabaseManager.h"
+//#include <QDebug>
 DatabaseManager::DatabaseManager(
         const QString& dbName,
         const QString& user,
@@ -11,12 +14,25 @@ DatabaseManager::DatabaseManager(
 {
     initialiseDatabase(dbName, user, password);
     QSqlQuery query;
+    AdjacencyList adjList = buildAdjacencyList();
 
-    if(!query.prepare("SELECT COUNT(*) FROM ways")) {
-        parseData(fileName);
-        ConfigManager cf = ConfigManager();
-        calculateAndSaveBoundsToConfig(cf);
+// Print the adjacency list
+    for (auto it = adjList.begin(); it != adjList.end(); ++it) {
+        QString node = it.key();
+
+        QSet<QString> neighbors = it.value();
+
+        qDebug() << "Node" << node << "is connected to:" << neighbors;
     }
+
+
+
+
+    //if(!query.prepare("SELECT COUNT(*) FROM ways")) {
+        //parseData(fileName);
+        //ConfigManager cf = ConfigManager();
+        //calculateAndSaveBoundsToConfig(cf);
+    //}
 }
 
 // Step 2a: Parse nodes from the OSM file into the database
@@ -305,3 +321,213 @@ QMap<QString, QString> DatabaseManager::getWayTags(const QString &wayId) {
 
     return tags;
 }
+
+
+
+QVector<QString> DatabaseManager::getDrivableWaysIds() {
+    QVector<QString> wayIds;
+
+    // Define the query to get drivable ways that also have a name
+    QSqlQuery query;
+    QString sql = R"(
+        SELECT DISTINCT t1.element_id
+        FROM tags t1
+        JOIN tags t2 ON t1.element_id = t2.element_id
+        WHERE t1.element_type = 'way'
+          AND t1.tag_key = 'highway'
+          AND t1.value IN ('service', 'primary', 'residential', 'tertiary',
+                           'unclassified', 'secondary', 'trunk', 'trunk_link',
+                           'living_street', 'motorway_link')
+          AND t2.tag_key = 'name'
+    )";
+
+    // Execute the query
+    if (query.exec(sql)) {
+        // Fetch the result and store the way IDs
+        while (query.next()) {
+            QString wayId = query.value(0).toString();
+            wayIds.push_back(wayId);
+        }
+    } else {
+        qDebug() << "Query execution failed:" << query.lastError().text();
+    }
+
+    return wayIds;
+}
+
+
+
+QString DatabaseManager::getWayNameById(const QString& wayId) {
+    QString wayName;
+
+
+    // Prepare the SQL query
+    QSqlQuery query;
+    query.prepare(R"(
+        SELECT DISTINCT tags.value
+        FROM tags
+        JOIN ways ON tags.element_id = ways.id
+        WHERE tags.tag_key = 'name'
+          AND ways.id = :wayId
+    )");
+
+    // Bind the way ID parameter
+    query.bindValue(":wayId", wayId);
+
+    // Execute the query and fetch the result
+    if (query.exec()) {
+        if (query.next()) {
+            wayName = query.value(0).toString();
+        } else {
+            qDebug() << "No name found for way ID:" << wayId;
+        }
+    } else {
+        qDebug() << "Query execution failed:" << query.lastError().text();
+    }
+
+    return wayName;
+}
+QVector<QString> DatabaseManager::getNodesOfWay(const QString& wayId) {
+    QVector<QString> nodeIds;
+
+    // SQL query to fetch the node IDs of the given way, ordered by node_order
+    QSqlQuery query;
+    QString sql = R"(
+        SELECT node_id
+        FROM ways_nodes
+        WHERE way_id = :wayId
+        ORDER BY node_order
+    )";
+
+    // Prepare and bind the way ID parameter
+    query.prepare(sql);
+    query.bindValue(":wayId", wayId);
+
+    // Execute the query and fetch the node IDs
+    if (query.exec()) {
+        while (query.next()) {
+            QString nodeId = query.value(0).toString();
+            nodeIds.push_back(nodeId);
+        }
+    } else {
+        qDebug() << "Failed to retrieve nodes for way ID" << wayId << ":" << query.lastError().text();
+    }
+
+    return nodeIds;
+}
+
+
+AdjacencyList DatabaseManager::buildAdjacencyList() {
+    AdjacencyList adjList;
+
+    // Step 1: Get the list of drivable way IDs
+    QVector<QString> drivableWayIds = getDrivableWaysIds();
+
+    // Step 2: Iterate through each drivable way
+    for (const auto& wayId : drivableWayIds) {
+        // Get the list of nodes for this way
+        QVector<QString> nodes = getNodesOfWay(wayId);
+
+        // Step 3: Add edges between consecutive nodes
+        for (int i = 0; i < nodes.size() - 1; ++i) {
+            const QString& currentNode = nodes[i];
+            const QString& nextNode = nodes[i + 1];
+
+            // Add the edge in both directions (undirected graph)
+            adjList[currentNode].insert(nextNode);
+            adjList[nextNode].insert(currentNode);
+        }
+    }
+
+    return adjList;
+}
+
+QVector<QString> DatabaseManager::getNodesOfWaysWithName() {
+    QVector<QString> nodeIds;
+    QSqlQuery query;
+    QString queryString=R"(
+SELECT element_id
+FROM tags
+WHERE element_type = 'way'
+  AND tag_key = 'name'
+  AND value LIKE '%rue%'
+   OR element_type = 'way'
+  AND tag_key = 'name'
+  AND value LIKE '%avenue%'
+   OR element_type = 'way'
+  AND tag_key = 'name'
+  AND value LIKE '%boulevard%';
+)";
+    // Query to get nodes with the 'addr:street' tag
+    //QString queryString = "SELECT element_id FROM tags WHERE element_type = 'node' AND tag_key = 'addr:street'";
+
+    if (!query.exec(queryString)) {
+        qDebug() << "Failed to execute query:" << query.lastError().text();
+        return nodeIds; // Return an empty vector if the query fails
+    }
+
+    // Fetch and store the node IDs
+    while (query.next()) {
+        QString nodeId = query.value(0).toString();
+        nodeIds.append(nodeId);
+    }
+
+    return nodeIds;
+}
+
+QString DatabaseManager::getWayNameForNode(const QString &nodeId) {
+    QSqlQuery query;
+    query.prepare(R"(
+        SELECT t.value AS way_name
+        FROM ways_nodes wn
+        JOIN tags t ON wn.way_id = t.element_id
+        WHERE wn.node_id = :nodeId
+          AND t.element_type = 'way'
+          AND t.tag_key = 'name'
+          AND (t.value LIKE '%rue%' OR t.value LIKE '%avenue%' OR t.value LIKE '%boulevard%')
+        LIMIT 1;
+    )");
+
+    query.bindValue(":nodeId", nodeId);
+
+    if (!query.exec()) {
+        qDebug() << "Database query failed:" << query.lastError().text();
+        return QString();
+    }
+
+    if (query.next()) {
+        return query.value(0).toString(); // Return the way name
+    }
+
+    return QString(); // Return an empty string if no result is found
+}
+/*
+QString DatabaseManager::getStreetNameByNode(const QString &nodeId) {
+    //select value from tags where element_type ='node' and tag_key ='addr:street' and element_id='10121250337' ;
+
+    QVector<QString> nodeIds;
+
+    // SQL query to fetch the node IDs of the given way, ordered by node_order
+    QSqlQuery query;
+    QString sql = R"(
+        SELECT value
+        FROM tags
+        WHERE element_type ='node'
+        AND tag_key ='addr:street'
+        AND element_id = :nodeId
+    )";
+
+    query.prepare(sql);
+    query.bindValue(":wayId", nodeId);
+
+
+    if(query.exec()){
+        return query.value(0).toString();
+    }else {
+        qDebug() << "Failed to retrieve the street name for node ID" << nodeId << ":" << query.lastError().text();
+    }
+
+
+    return "#";
+}
+*/

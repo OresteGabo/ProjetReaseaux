@@ -148,12 +148,6 @@
 			"MU",
 			"EWIEGA46WW/moc_Way.cpp",
 			null
-		],
-		[
-			"/home/oreste/CLionProjects/GraphicsInQt/djkstra.h",
-			"MU",
-			"EWIEGA46WW/moc_djkstra.cpp",
-			null
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],

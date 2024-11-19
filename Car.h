@@ -1,83 +1,47 @@
+#ifndef CAR_H
+#define CAR_H
+
 #include <QGraphicsEllipseItem>
 #include <QGraphicsScene>
-#include <QString>
 #include <QPointF>
+#include <QString>
+#include <QGraphicsPathItem>
 #include "CustomScene.h"
+#include "Path.h"
 #include <QSqlError>
-class Car {
+
+class Car: public QObject  {
+    Q_OBJECT
 public:
-    Car(const QString &id, const QString &initialNodeId, const QString &destinationNodeId, QGraphicsScene *scene)
-            : carId(id), initialNode(initialNodeId), destinationNode(destinationNodeId), scene(scene) {
-        // Initialize car's graphical representation (a simple ellipse for now)
-        carItem = new QGraphicsEllipseItem(0, 0, 1, 1);  // Create a circle for the car
+    Car(const QString& id, const Path& path, QGraphicsScene* scene);
 
-        carItem->setBrush(Qt::red);  // Set the car color
+    // Set position of the car on the scene
+    void setPosition(const QPointF& position);
 
-        // Get latitude and longitude from the database
-        double initialLat, initialLon, destLat, destLon;
-        if (!getNodeCoordinates(initialNodeId, initialLat, initialLon) ||
-            !getNodeCoordinates(destinationNodeId, destLat, destLon)) {
-            qDebug() << "Error: Failed to get node coordinates from database.";
-            return;
-        }
+    // Update the destination marker
+    void updateDestination(const QPointF& destinationPos);
 
-        // Convert lat/lon to scene coordinates using CustomScene::latLonToXY
-        QPointF initialPos = CustomScene::latLonToXY(initialLat, initialLon);
-        qDebug()<<"Initial position is ("+QString::number(initialPos.x())+","+QString::number(initialPos.y())+")";
-        QPointF destinationPos = CustomScene::latLonToXY(destLat, destLon);
-        qDebug()<<"destinationPos position is ("+QString::number(destinationPos.x())+","+QString::number(destinationPos.y())+")";
+    // Get coordinates of a node from the database
+    bool getNodeCoordinates(const QString& nodeId, double& lat, double& lon);
 
-        // Set the initial position of the car item
-        carItem->setPos(initialPos);
+    // Draw the path for the car
+    void drawPath();
 
-        // Add car item to the scene
-        scene->addItem(carItem);
-
-        qDebug() << "Car created with ID:" << carId << "Initial Position:" << initialPos << "Destination:" << destinationPos;
-    }
+    // Move the car along its path
+    void moveAlongPath();
 
 
-    // Method to set position on the scene (using QPointF)
-    void setPosition(const QPointF &position) {
-        carItem->setPos(position);
-    }
-
-    // Method to update the destination (e.g., show a red circle for the destination)
-    void updateDestination(const QPointF &destinationPos) {
-        // Update or draw the destination marker (simple red circle for example)
-        if (destinationItem) {
-            scene->removeItem(destinationItem);
-            delete destinationItem;
-        }
-        destinationItem = new QGraphicsEllipseItem(destinationPos.x() - 5, destinationPos.y() - 5, 10, 10);
-        destinationItem->setBrush(Qt::red);  // Red circle for the destination
-        scene->addItem(destinationItem);
-    }
-    bool getNodeCoordinates(const QString &nodeId, double &lat, double &lon) {
-        QSqlQuery query;
-        query.prepare("SELECT lat, lon FROM nodes WHERE id = :nodeId");
-        query.bindValue(":nodeId", nodeId);
-
-        if (!query.exec()) {
-            qDebug() << "Database query error:" << query.lastError().text();
-            return false;
-        }
-
-        if (query.next()) {
-            lat = query.value(0).toDouble();
-            lon = query.value(1).toDouble();
-            return true;
-        } else {
-            qDebug() << "Node ID not found in database:" << nodeId;
-            return false;
-        }
-    }
 
 private:
     QString carId;
-    QString initialNode;
-    QString destinationNode;
-    QGraphicsScene *scene;
-    QGraphicsEllipseItem *carItem;  // Visual representation of the car
-    QGraphicsEllipseItem *destinationItem = nullptr;  // Destination marker
+    Path path;  // The path the car follows
+    QGraphicsScene* scene;
+    QGraphicsEllipseItem* carItem;       // Visual representation of the car
+    QGraphicsEllipseItem* destinationItem = nullptr;  // Destination marker
+    QGraphicsPathItem* pathItem = nullptr;  // Visual representation of the path
+
+
+    int currentNodeIndex = 0; // Current position in the path
 };
+
+#endif // CAR_H

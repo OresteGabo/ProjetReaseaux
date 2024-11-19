@@ -14,6 +14,10 @@
 #include <QTextEdit>
 #include <QDebug>
 #include <QSqlError>
+#include <QRandomGenerator>
+#include "Path.h"
+//#include "AdjacencyList.h"
+///#include "DatabaseManager.h"
 
 class AddCarDialog : public QDialog {
 Q_OBJECT
@@ -23,14 +27,15 @@ public:
     ~AddCarDialog();
 
 signals:
-    void carAdded(const QString &initialNodeId, const QString &destinationNodeId, int speed, int frequency);
+    void carAdded(const Path& path, int speed, int frequency);
 
 private slots:
     void onValidate();
     void onCancel();
+    void onGeneratePath();
 
 private:
-    void loadNodes();
+
 
     QGraphicsScene *scene;
     QComboBox *initialAddressComboBox;
@@ -39,8 +44,9 @@ private:
     QLineEdit *frequencyLineEdit;
     QPushButton *validateButton;
     QPushButton *cancelButton;
-    QLabel *pathFingerLabel=new QLabel("NO PATH FOUND");
+    QTextEdit* pathInfo;
     QPushButton* generatePathButton;
+    //DatabaseManager* databaseManager; // Assuming you have access to this in your project
 };
 
 #endif // ADDCAR_DIALOG_H

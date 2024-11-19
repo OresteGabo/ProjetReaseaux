@@ -1,82 +1,127 @@
-//
-// Created by oreste on 29/10/24.
-//
-
+#include <QTextEdit>
 #include "Path.h"
-Path::Path(PathNode* head):head(head){}
-Path* Path::addNode(PathNode* node){
-    PathNode* s=head;
 
-    if(head==nullptr){
-        head=node;
-        return this;
-    }
-    while(s->next!=nullptr){
-        s=s->next;
-    }
-    s->next=node;
-    return this;
-
+Path::Path() : head(nullptr), tail(nullptr) {
+    //nextDestinationNode=head->next;
 }
-Path* Path::addNode( Node* a){
-    auto s=head;
-    auto node=new PathNode(a);
 
-    if(head==nullptr){
-        head=node;
-        return this;
-    }
-    while(s->next!=nullptr){
-        s=s->next;
-    }
-    s->next=node;
-    return this;
+Path::~Path() {
+    clear();
 }
-PathNode* Path::getFinalPath()const{
-    auto s=head;
-    if(head==nullptr){
-        return nullptr;
-    }
-    while(s->next!= nullptr){
-        s=s->next;
-    }
-    return s;
-}
-int Path::getSize()const{
-    int counter=0;
-    PathNode* s=head;
-    while(s!=nullptr){
-        counter++;
-        s=s->next;
-    }
-    return counter;
-}
-PathNode* Path::getHead()const{
-    return head;
-}
-void Path::draw(CustomScene* scene)  {
-    if (!head) return;
 
-    PathNode *current = head;
-    while (current && current->next) {
-        qDebug()<<current->getNode()->toPoint();
-        auto startNode = current->getNode();
-        auto endNode = current->next->getNode();
+// Helper function to clear the linked list
+void Path::clear() {
+    auto current = head;
+    while (current != nullptr) {
+        auto toDelete = current;
+        current = current->next;
+        delete toDelete;
+    }
+    head = nullptr;
+    tail = nullptr;
+}
 
-        // Convert latitude/longitude to scene coordinates
-        QPointF startPoint = CustomScene::latLonToXY(startNode->lat, startNode->lon);
-        QPointF endPoint = CustomScene::latLonToXY(endNode->lat, endNode->lon);
+// Function to append a node to the end of the path
+void Path::append(const QString& nodeId) {
+    PathNode* newNode = new PathNode(nodeId);
+    if (tail == nullptr) {
+        head = newNode;
+        tail = newNode;
+    } else {
+        tail->next = newNode;
+        tail = newNode;
+    }
+}
 
-        // Draw the line on the scene
-        scene->addLine(QLineF(startPoint, endPoint), QPen(Qt::red, 2));
+// Function to generate a path using BFS
+bool Path::generatePath(const QString& startNode, const QString& destinationNode, const AdjacencyList& adjList) {
+    clear(); // Clear any existing path
+    qDebug()<<"Generate path called";
+    QMap<QString, QString> previousNode; // To track the path
+    QQueue<QString> queue;
+    QSet<QString> visited;
+
+    // Initialize BFS
+    queue.enqueue(startNode);
+    visited.insert(startNode);
+
+    bool pathFound = false;
+    qDebug()<<"Generate path called before the loop";
+    while (!queue.isEmpty()) {
+        QString currentNode = queue.dequeue();
+
+        // Check if we reached the destination
+        if (currentNode == destinationNode) {
+            pathFound = true;
+            break;
+        }
+
+        // Explore neighbors
+        for (const QString& neighbor : adjList[currentNode]) {
+            if (!visited.contains(neighbor)) {
+                queue.enqueue(neighbor);
+                visited.insert(neighbor);
+                previousNode[neighbor] = currentNode;
+            }
+        }
+    }
+    qDebug()<<"After the loop";
+    // Reconstruct the path if it was found
+    if (pathFound) {
+        QString currentNode = destinationNode;
+        while (currentNode != startNode) {
+            append(currentNode);
+            currentNode = previousNode[currentNode];
+        }
+        append(startNode); // Add the start node at the end
+        return true;
+    } else {
+        qDebug() << "No path found between" << startNode << "and" << destinationNode;
+        return false;
+    }
+}
+
+// Function to print the path for debugging
+void Path::printPath() const {
+    auto current = head;
+    qDebug()<<"Path:";
+    while (current != nullptr) {
+        qDebug()<< current->nodeId;
+        //if()
         current = current->next;
     }
 }
 
-void Path::logMessage(const QString &message, QPlainTextEdit *debugOutput) const {
-    debugOutput->appendPlainText(message);
+int Path::size() const {
+    auto current=head;
+    int counter=0;
+    while(current!= nullptr){
+        counter++;
+        current = current->next;
+    }
+    return counter;
 }
 
-Path::~Path() {
+PathNode* Path::getNodeAt(int index) const {
+    if (index < 0) {
+        qDebug() << "Invalid index:" << index;
+        return nullptr;
+    }
 
+    PathNode* current = head;
+    int currentIndex = 0;
+
+    // Traverse the list to find the node at the specified index
+    while (current != nullptr && currentIndex < index) {
+        current = current->next;
+        currentIndex++;
+    }
+
+    // If the node is found, return it; otherwise, return nullptr
+    if (currentIndex == index) {
+        return current;
+    } else {
+        qDebug() << "Index out of bounds:" << index;
+        return nullptr;
+    }
 }

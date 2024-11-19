@@ -37,7 +37,6 @@ add_executable(GraphicsInQt main.cpp
         MainWidget.h
         AddCarDialog.cpp
         AddCarDialog.h
-        djkstra.h
 )
 target_link_libraries(GraphicsInQt
         Qt5::Core

@@ -1,25 +1,16 @@
-//
-// Created by oreste on 29/10/24.
-//
+#ifndef PATHNODE_H
+#define PATHNODE_H
 
-#ifndef GRAPHICSINQT_PATHNODE_H
-#define GRAPHICSINQT_PATHNODE_H
-
-#include <QPlainTextEdit>
+#include <QString>
 #include "Node.h"
-
-//Chainon d'une liste chainéee Path
 class PathNode {
-    friend class Car;
-    friend class Path;
 public:
-    PathNode(Node* node,PathNode* next=nullptr);
-    const Node* getNode() const;
-    void logMessage(const QString &message, QPlainTextEdit *debugOutput )const;
-private:
-    Node* node;
-    PathNode* next;
+    QString nodeId;      // The ID of the node
+    PathNode* next;      // Pointer to the next node in the path
+
+    // Constructor
+    PathNode(const QString& nodeId, PathNode* nextNode = nullptr)
+            : nodeId(nodeId), next(nextNode) {}
 };
 
-
-#endif //GRAPHICSINQT_PATHNODE_H
+#endif // PATHNODE_H

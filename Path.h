@@ -1,28 +1,46 @@
-//
-// Created by oreste on 29/10/24.
-//
-
-#ifndef GRAPHICSINQT_PATH_H
-#define GRAPHICSINQT_PATH_H
-
+#ifndef PATH_H
+#define PATH_H
 
 #include "PathNode.h"
+#include <QString>
+#include <QMap>
+#include <QSet>
+#include <QQueue>
+#include <QDebug>
+
+// Adjacency list type: a map where each node ID maps to a set of connected node IDs
+using AdjacencyList = QMap<QString, QSet<QString>>;
 
 class Path {
 
 public:
-    explicit Path(PathNode* h=nullptr);
+    Path();
     ~Path();
-    Path* addNode(PathNode*);
-    Path* addNode(Node*);
-    [[nodiscard]] PathNode* getFinalPath()const;
-    [[nodiscard]] int getSize()const;
-    [[nodiscard]] PathNode* getHead()const;
-    void draw(CustomScene* scene) ;
-    void logMessage(const QString &message, QPlainTextEdit *debugOutput )const;
+
+    // Build the path from startNode to destinationNode using the adjacency list
+    bool generatePath(const QString& startNode, const QString& destinationNode, const AdjacencyList& adjList);
+
+    // Add a node to the end of the path
+    void append(const QString& nodeId);
+
+    // Print the path for debugging
+    void printPath() const;
+
+    // Get the head of the path (start node)
+    auto getHead() const { return head; }
+    auto getTail()const { return tail; }
+    PathNode* getNodeAt(int index) const;
+
+
+    int size()const;
+    PathNode* nextDestinationNode;
+
 private:
-    PathNode* head;
+    PathNode* head;   // Pointer to the head of the linked list
+    PathNode* tail;   // Pointer to the tail of the linked list
+
+    // Helper function to clear the linked list
+    void clear();
 };
 
-
-#endif //GRAPHICSINQT_PATH_H
+#endif // PATH_H
