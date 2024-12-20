@@ -18,6 +18,7 @@ Q_OBJECT
 
 public:
     CustomGraphicsView(QGraphicsScene* scene,QWidget *parent = nullptr);
+    //void addIcon(const QString& imagePath, const QPointF& position);
 
 protected:
     void wheelEvent(QWheelEvent *event) override;

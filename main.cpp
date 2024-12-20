@@ -27,9 +27,7 @@ int main(int argc, char *argv[]) {
 
     // Create the main widget, passing in the custom scene and setting it up
     auto mainWidget = new MainWidget();
-
-    qDebug()<<"Test function gives";
-    qDebug()<<DatabaseManager::getPositionByNodeId("9366172633");
+    //qDebug()<<"Available drivers are "<<QSqlDatabase::drivers();
 
     mainWidget->show();
 

@@ -24,12 +24,23 @@ DatabaseManager::DatabaseManager(
 
         //qDebug() << "Node" << node << "is connected to:" << neighbors;
     }
-
-
+    //parseData("map (7).osm");
+    //parseData("map (15).osm");
+    //parseData("map (14).osm");
+    for(int x=15;x<18;x++){
+        //QString fName="osm_data/file_"+QString::number(x)+".osm";
+        //parseData(fName);
+        //qDebug()<<">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>File :"<<fName<<" finished parsing";
+    }
+/*
+    QVector<QString> v=getAllAmenitiesByType("fountain");
+    for(auto val:v){
+        qDebug()<<"fountain id :"<<val;
+    }*/
 
 
     //if(!query.prepare("SELECT COUNT(*) FROM ways")) {
-        //parseData(fileName);
+
         //ConfigManager cf = ConfigManager();
         //calculateAndSaveBoundsToConfig(cf);
     //}
@@ -201,8 +212,8 @@ bool DatabaseManager::parseData(const QString &fileName) {
     QSqlQuery query;
 
     // Critical section: Database operations
-    truncateAllTables();
-    createTables();
+    //truncateAllTables();
+    //createTables();
 
     // Parse nodes
     parseNodes(xml, query);
@@ -322,8 +333,6 @@ QMap<QString, QString> DatabaseManager::getWayTags(const QString &wayId) {
     return tags;
 }
 
-
-
 QVector<QString> DatabaseManager::getDrivableWaysIds() {
     QVector<QString> wayIds;
 
@@ -354,8 +363,6 @@ QVector<QString> DatabaseManager::getDrivableWaysIds() {
 
     return wayIds;
 }
-
-
 
 QString DatabaseManager::getWayNameById(const QString& wayId) {
     QString wayName;
@@ -415,7 +422,6 @@ QVector<QString> DatabaseManager::getNodesOfWay(const QString& wayId) {
 
     return nodeIds;
 }
-
 
 AdjacencyList DatabaseManager::buildAdjacencyList() {
     AdjacencyList adjList;
@@ -519,7 +525,27 @@ QPointF DatabaseManager::getPositionByNodeId(QString nodeId){
     qDebug()<<"The pos of node "+nodeId+" is not found";
     return {5,5};
 }
+/*
+QVector<QString> DatabaseManager::getAllAmenitiesByType(const QString& value){
+    QVector<QString> vector;
+    QSqlQuery query;
+    QString sql = "SELECT DISTINCT element_id FROM tags WHERE element_type = 'node' AND tag_key = 'amenity' AND value = :value;";
 
+    query.prepare(sql);
+    query.bindValue(":value", value);
+
+    if (query.exec()) {
+        while (query.next()) {  // Iterate through the result set
+            vector.push_back(query.value(0).toString());
+        }
+    } else {
+        qDebug() << "Query failed:" << query.lastError().text();
+    }
+
+    return vector;
+}
+
+*/
 /*
 QString DatabaseManager::getStreetNameByNode(const QString &nodeId) {
     //select value from tags where element_type ='node' and tag_key ='addr:street' and element_id='10121250337' ;

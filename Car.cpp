@@ -9,7 +9,7 @@ Car::Car(const QString& id, Path* path, QGraphicsScene* scene)
     // Initialize car's graphical representation (a simple ellipse for now)
     carItem = new QGraphicsEllipseItem(0, 0, 2, 2);
     carItem->setBrush(Qt::red);
-initialiseDesinationNodes();
+    initialiseDesinationNodes();
 
 
     // Get initial and destination node coordinates
@@ -168,7 +168,7 @@ void Car::updatePosition(qreal elapsedTime, QVector<Car*> allCars) {
     qDebug()<<"delta x:"<<deltaX<<" deltaY: "<<deltaY;
     qDebug()<<"currentPosition is "<<*currentPosition;
     //*currentPosition += QPointF(deltaX, deltaY);
-    currentPosition=new QPointF(currentPosition->x()+(deltaX*10000),currentPosition->y()+(deltaY*10000));
+    currentPosition=new QPointF(currentPosition->x()+(deltaX*1000),currentPosition->y()+(deltaY*1000));
     qDebug()<<"currentPosition is "<<*currentPosition;
 
     // Check if the car has reached the current destination node

@@ -33,14 +33,29 @@ void CustomGraphicsView::showEvent(QShowEvent *event) {
     fitInView(scene()->sceneRect(), Qt::KeepAspectRatio);
 }
 void CustomGraphicsView::wheelEvent(QWheelEvent *event) {
-    // Zoom in/out
-    if (event->angleDelta().y() > 0) {
-        scale(1.1, 1.1); // Zoom in
-    } else {
-        scale(0.9, 0.9); // Zoom out
-    }
+    // Get the current mouse position in scene coordinates
+    QPointF mouseScenePos = mapToScene(event->pos());
+
+    // Determine zoom factor
+    double scaleFactor = (event->angleDelta().y() > 0) ? 1.1 : 0.9;
+
+    // Apply the zoom
+    scale(scaleFactor, scaleFactor);
+
+    // Calculate new mouse position in scene coordinates after scaling
+    QPointF newMouseScenePos = mapToScene(event->pos());
+
+    // Compute the difference (offset) between the old and new positions
+    QPointF offset = newMouseScenePos - mouseScenePos;
+
+    // Translate the view to keep the mouse position consistent
+    translate(offset.x(), offset.y());
+
+    // Accept the event
     event->accept();
 }
+
+
 
 void CustomGraphicsView::mousePressEvent(QMouseEvent *event) {
     if (event->button() == Qt::LeftButton) {
@@ -70,4 +85,21 @@ void CustomGraphicsView::mouseReleaseEvent(QMouseEvent *event) {
     }
     QGraphicsView::mouseReleaseEvent(event);
 }
+/*
+// Function to add an icon to the map
+void CustomGraphicsView::addIcon( const QString& imagePath, const QPointF& position) {
+    // Load the image
+    QPixmap pixmap(imagePath);
 
+    // Create a pixmap item
+    auto iconItem = new QGraphicsPixmapItem(pixmap);
+
+    // Set the position (adjust for centering if needed)
+    iconItem->setPos(position);
+
+    // Optionally, set a custom scale if the image is too large/small
+    iconItem->setScale(0.1); // Scale down by 50%
+
+    // Add the item to the scene
+    scene()->addItem(iconItem);
+}*/

@@ -112,6 +112,9 @@ public:
 
     static bool parseNodes(QXmlStreamReader &xml, QSqlQuery &query);
     static bool parseWays(QXmlStreamReader &xml, QSqlQuery &query);
+
+    //select distinct element_id from tags where element_type ='node' and tag_key='amenity' and value='fountain';
+    //static QVector<QString> getAllAmenitiesByType(const QString& value);
     void markJunctionNodes();
     QMap<QString, QString> getWayTags(const QString &wayId);
 

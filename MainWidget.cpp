@@ -136,7 +136,7 @@ void MainWidget::addCar(const QString& initialNodeId, const QString& destination
         qDebug() << "Failed to generate path for the car.";
     }
 }
-
+/*
 void MainWidget::addCar() {
     // Create adjacency list from the database
     AdjacencyList adjList = DatabaseManager::buildAdjacencyList();
@@ -162,7 +162,7 @@ void MainWidget::addCar() {
     // Use the overloaded addCar function with the selected nodes
     addCar(initialNodeId, destinationNodeId);
 }
-
+*/
 void MainWidget::onRunButtonClicked() {
     /*debugTextArea->append("Starting car movement...");
     movementTimer->start(50); // Adjust the interval as needed
@@ -195,7 +195,7 @@ void MainWidget::updateAnimation() {
 }
 
 
-
+/*
 void MainWidget::toggleSimulation() {
     if (animationTimer->isActive()) {
         // If the animation is active, stop it
@@ -209,7 +209,7 @@ void MainWidget::toggleSimulation() {
         //logMessage("\t>Simulation lancée");
     }
 }
-
+*/
 
 //From App class
 void MainWidget::updateCarPositions(qreal elapsedTime) {

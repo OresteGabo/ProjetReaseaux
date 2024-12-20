@@ -6,13 +6,15 @@
 #include<QJsonDocument>
 #include <QJsonObject>
 #include <QPlainTextEdit>
+#include <QFutureWatcher>
+#include <QtConcurrent/QtConcurrent>
 
 CustomScene::CustomScene(int width, int height, QObject *parent)
         : QGraphicsScene(parent) {
     setSceneRect(0, 0, width, height);
     setBackgroundBrush(QBrush(Qt::lightGray));
     loadWaysFromDatabase();
-    loadNodesFromDatabase();
+    //loadNodesFromDatabase();
 
 }
 
@@ -35,39 +37,73 @@ void CustomScene::loadNodesFromDatabase() {
     }
 }
 
+
+
 void CustomScene::loadWaysFromDatabase() {
-    QSqlQuery query;
+    // Define QFutureWatcher objects
+    auto highwayWatcher = new QFutureWatcher<void>(this);
+    auto waterWatcher = new QFutureWatcher<void>(this);
+    auto buildingWatcher = new QFutureWatcher<void>(this);
+    auto landuseWatcher = new QFutureWatcher<void>(this);
 
-    // Load and draw road ways first
-    loadSpecificWays("highway", Qt::darkGray);//QColor(128, 128, 128, 60));//QColor(128, 128, 128, 180)); // Grey color for roads
+    // Helper lambda for updating the scene
+    auto updateScene = [this]() {
+        qDebug() << "Scene updated after a task completed.";
+        this->update(); // Trigger a repaint of the scene
+    };
 
-    // Load and draw other types of ways
-    loadSpecificWays("waterway", QColor(0, 150, 255, 120));    // Blue color for rivers
-    loadSpecificWays("building", QColor(150, 75, 0, 150)); // Light grey for buildings
-    loadSpecificWays("landuse", QColor(34, 139, 34, 150));   // Green for parks/land
+    // Connect watchers to update the scene when each task finishes loading
+    connect(highwayWatcher, &QFutureWatcher<void>::finished, this, updateScene);
+    connect(waterWatcher, &QFutureWatcher<void>::finished, this, updateScene);
+    connect(buildingWatcher, &QFutureWatcher<void>::finished, this, updateScene);
+    connect(landuseWatcher, &QFutureWatcher<void>::finished, this, updateScene);
+
+    // Use QtConcurrent to run loadSpecificWays in separate threads
+    highwayWatcher->setFuture(QtConcurrent::run([this]() {
+        loadSpecificWays("highway", Qt::darkGray);
+    }));
+
+    waterWatcher->setFuture(QtConcurrent::run([this]() {
+        loadSpecificWays("waterway", QColor(0, 150, 255, 120));
+    }));
+
+    buildingWatcher->setFuture(QtConcurrent::run([this]() {
+        loadSpecificWays("building", QColor(150, 75, 0, 150));
+    }));
+
+    landuseWatcher->setFuture(QtConcurrent::run([this]() {
+        loadSpecificWays("landuse", QColor(34, 139, 34, 150));
+    }));
 }
 
+
 void CustomScene::loadSpecificWays(const QString &type, const QColor &color) {
-    QSqlQuery query;
+    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL", type); // Unique connection name
+    db.setDatabaseName("OSMData");
+    db.setHostName("127.0.0.1");
+    db.setUserName("oreste");
+    db.setPassword("Muhirehonore@1*");
+
+    if (!db.open()) {
+        qDebug() << "Database connection failed for" << type << ":" << db.lastError().text();
+        return;
+    }
+
+    emit debugMessage("Started loading " + type); // Emit a debug message
+    QSqlQuery query(db);
     query.prepare("SELECT id FROM ways WHERE id IN (SELECT element_id FROM tags WHERE tag_key = :type)");
     query.bindValue(":type", type);
     query.exec();
 
-    QPen pen(color);
-    if (type != "highway") {
-        pen.setCosmetic(true); // Make the pen non-scaling for non-roads
-    }
-
-    // Set smoother line joins and caps
-    pen.setJoinStyle(Qt::RoundJoin);
-    pen.setCapStyle(Qt::RoundCap);
+    QVector<QPolygonF> polygons;
+    QVector<QPainterPath> paths;
 
     while (query.next()) {
         QString wayId = query.value(0).toString();
         QVector<QPointF> wayPoints;
 
         // Get the node references for this way
-        QSqlQuery wayQuery;
+        QSqlQuery wayQuery(db);
         wayQuery.prepare("SELECT node_id FROM ways_nodes WHERE way_id = :wayId ORDER BY node_order");
         wayQuery.bindValue(":wayId", wayId);
         wayQuery.exec();
@@ -75,8 +111,7 @@ void CustomScene::loadSpecificWays(const QString &type, const QColor &color) {
         while (wayQuery.next()) {
             QString nodeId = wayQuery.value(0).toString();
 
-            // Fetch node coordinates based on node ID
-            QSqlQuery nodeQuery;
+            QSqlQuery nodeQuery(db);
             nodeQuery.prepare("SELECT lat, lon FROM nodes WHERE id = :id");
             nodeQuery.bindValue(":id", nodeId);
 
@@ -93,12 +128,10 @@ void CustomScene::loadSpecificWays(const QString &type, const QColor &color) {
             }
         }
 
-        // Draw the way depending on whether it's a closed or open polygon
         if (!wayPoints.isEmpty()) {
             if (wayPoints.first() == wayPoints.last()) {
                 // Closed polygon (e.g., buildings)
-                QPolygonF polygon(wayPoints);
-                addPolygon(polygon, pen, QBrush(color));
+                polygons.append(QPolygonF(wayPoints));
             } else {
                 // Open polyline (e.g., roads, rivers)
                 QPainterPath path;
@@ -106,11 +139,38 @@ void CustomScene::loadSpecificWays(const QString &type, const QColor &color) {
                 for (const QPointF &point : wayPoints) {
                     path.lineTo(point);
                 }
-                addPath(path, pen, QBrush(Qt::NoBrush));
+                paths.append(path);
             }
         }
     }
+
+    db.close();
+    QSqlDatabase::removeDatabase(type);
+
+    // Schedule GUI updates in the main thread
+    QMetaObject::invokeMethod(this, [this, type, color, polygons, paths]() {
+        QPen pen(color);
+        if (type != "highway") {
+            pen.setCosmetic(true);
+        }
+
+        pen.setJoinStyle(Qt::RoundJoin);
+        pen.setCapStyle(Qt::RoundCap);
+
+        for (const auto &polygon : polygons) {
+            addPolygon(polygon, pen, QBrush(color));
+        }
+        for (const auto &path : paths) {
+            addPath(path, pen, QBrush(Qt::NoBrush));
+        }
+
+        qDebug() << "Finished loading" << type << "ways.";
+        this->update();
+    }, Qt::QueuedConnection);
+
+    emit debugMessage("Finished loading " + type); // Emit another debug message
 }
+
 
 QPointF CustomScene::latLonToXY(double lat, double lon) {
     // Here you would implement the conversion using the previously established bounds

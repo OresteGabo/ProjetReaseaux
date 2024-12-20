@@ -29,17 +29,23 @@ Q_OBJECT
 
 public:
     MainWidget(QWidget *parent = nullptr);
-    void addCar();
+    //void addCar();
     void addCar(const QString& initialNodeId, const QString& destinationNodeId);
     void updateAnimation();
-    void toggleSimulation();
+    //void toggleSimulation();
     void updateConnectedCars();
     void onDisplayInfo();
+    //void addCars(int number);
 
     //From App class
     void updateCarPositions(qreal elapsedTime);
+    /*void reset();
+    void drawAmenitiesIcons();
+    void draw(const QVector<QString> &data,const QString& value);
+    void draw(const QString&);
+*/
+
 signals:
-    emit  void carAdded(const Path&, int speed, int frequency);
 
 
 private slots:
@@ -50,21 +56,20 @@ private slots:
 public slots:
     void onRunButtonClicked();
 
-
 private:
     QTextEdit *debugTextArea;
     CustomGraphicsView *graphicsView;
     QPushButton *clearButton;
     QPushButton *changeDataButton;
-    QPushButton *addCarButton;
+    QPushButton *addCarButton,addCarsButton;
     QVector<Car*> cars;
     QPushButton *displayInfo;
 
     int animationDuration;
     QTimer* animationTimer;
+    //QLineEdit* carCountInput;
 
     QPushButton* runButton;
-    QTimer* movementTimer; // Timer for car movement
 
 
 
