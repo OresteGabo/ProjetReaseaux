@@ -1,34 +1,44 @@
 #include <QApplication>
-#include <QtSql/QSqlDatabase>
-#include <QScreen>
-#include "CustomScene.h"
-#include "ConfigManager.h"
-#include "CustomGraphicsView.h"
-#include "DatabaseManager.h"
-#include "MainWidget.h"
-#include <iostream>
-using namespace std;
-
+#include <QHBoxLayout>
+#include <QVBoxLayout>
+#include <QSplitter>
+#include <QPushButton>
+#include "geojsonviewer.h"
+#include "geojsoncontrols.h"
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
 
-    // Initialize database manager
-    DatabaseManager dbMngr("OSMData", "oreste", "Muhirehonore@1*", "map(15).osm");
+    // Create the main window container
+    QWidget window;
+    window.setWindowTitle("GeoJSON Viewer");
 
-    // Create ConfigManager for config.json
-    ConfigManager configManager("config.json");
+    // Create the main viewer (GeoJSONViewer) with default zoom factor 100
+    GeoJSONViewer *viewer = new GeoJSONViewer(nullptr, 900000.0);  // Pass 100 for automatic zoom-in
 
-    // Get screen size and configure main window dimensions
-    auto screen = QGuiApplication::primaryScreen();
-    auto screenGeometry = screen->geometry();
-    cout << " Height: " << screenGeometry.height() << " , Width: " << screenGeometry.width() << endl;
-    configManager.setMainWindowSize(screenGeometry);
+    // Load GeoJSON file
+    viewer->loadGeoJSON("map.geojson");
 
+    // Create controls for zoom and pan
+    GeoJSONControls *controls = new GeoJSONControls(viewer);
 
-    // Create the main widget, passing in the custom scene and setting it up
-    auto mainWidget = new MainWidget();
-    mainWidget->show();
+    // Use a QSplitter to divide the space
+    QSplitter *splitter = new QSplitter(Qt::Horizontal, &window);
+
+    // Add viewer and controls to the splitter
+    splitter->addWidget(viewer);
+    splitter->addWidget(controls);
+
+    // Set proportional sizes: 80% for the viewer, 20% for controls
+    splitter->setStretchFactor(0, 8); // Viewer gets 80% (8 parts out of 10)
+    splitter->setStretchFactor(1, 2); // Controls get 20% (2 parts out of 10)
+
+    // Make the window maximized
+    QVBoxLayout *mainLayout = new QVBoxLayout;
+    mainLayout->addWidget(splitter);
+    window.setLayout(mainLayout);
+
+    window.showMaximized();
 
     return app.exec();
 }

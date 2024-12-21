@@ -1,0 +1,40 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/GraphicsInQt_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/GraphicsInQt_autogen.dir/ParseCache.txt"
+  "GraphicsInQt_autogen"
+  "CMakeFiles/GraphicsInQt.dir/AddCarDialog.cpp.obj"
+  "CMakeFiles/GraphicsInQt.dir/AddCarDialog.cpp.obj.d"
+  "CMakeFiles/GraphicsInQt.dir/Car.cpp.obj"
+  "CMakeFiles/GraphicsInQt.dir/Car.cpp.obj.d"
+  "CMakeFiles/GraphicsInQt.dir/ConfigManager.cpp.obj"
+  "CMakeFiles/GraphicsInQt.dir/ConfigManager.cpp.obj.d"
+  "CMakeFiles/GraphicsInQt.dir/CustomGraphicsView.cpp.obj"
+  "CMakeFiles/GraphicsInQt.dir/CustomGraphicsView.cpp.obj.d"
+  "CMakeFiles/GraphicsInQt.dir/CustomScene.cpp.obj"
+  "CMakeFiles/GraphicsInQt.dir/CustomScene.cpp.obj.d"
+  "CMakeFiles/GraphicsInQt.dir/DatabaseManager.cpp.obj"
+  "CMakeFiles/GraphicsInQt.dir/DatabaseManager.cpp.obj.d"
+  "CMakeFiles/GraphicsInQt.dir/GraphicsInQt_autogen/mocs_compilation.cpp.obj"
+  "CMakeFiles/GraphicsInQt.dir/GraphicsInQt_autogen/mocs_compilation.cpp.obj.d"
+  "CMakeFiles/GraphicsInQt.dir/MainWidget.cpp.obj"
+  "CMakeFiles/GraphicsInQt.dir/MainWidget.cpp.obj.d"
+  "CMakeFiles/GraphicsInQt.dir/Node.cpp.obj"
+  "CMakeFiles/GraphicsInQt.dir/Node.cpp.obj.d"
+  "CMakeFiles/GraphicsInQt.dir/Path.cpp.obj"
+  "CMakeFiles/GraphicsInQt.dir/Path.cpp.obj.d"
+  "CMakeFiles/GraphicsInQt.dir/PathNode.cpp.obj"
+  "CMakeFiles/GraphicsInQt.dir/PathNode.cpp.obj.d"
+  "CMakeFiles/GraphicsInQt.dir/Way.cpp.obj"
+  "CMakeFiles/GraphicsInQt.dir/Way.cpp.obj.d"
+  "CMakeFiles/GraphicsInQt.dir/main.cpp.obj"
+  "CMakeFiles/GraphicsInQt.dir/main.cpp.obj.d"
+  "GraphicsInQt.exe"
+  "GraphicsInQt.exe.manifest"
+  "GraphicsInQt.pdb"
+  "libGraphicsInQt.dll.a"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/GraphicsInQt.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

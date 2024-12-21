@@ -1,60 +1,62 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'MainWidget.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.15.3)
+** Created by: The Qt Meta Object Compiler version 68 (Qt 6.8.0)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include <memory>
 #include "../../../MainWidget.h"
-#include <QtCore/qbytearray.h>
+#include <QtGui/qtextcursor.h>
 #include <QtCore/qmetatype.h>
+
+#include <QtCore/qtmochelpers.h>
+
+#include <memory>
+
+
+#include <QtCore/qxptype_traits.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'MainWidget.h' doesn't include <QObject>."
-#elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.15.3. It"
+#elif Q_MOC_OUTPUT_REVISION != 68
+#error "This file was generated using the moc from 6.8.0. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
 
-QT_BEGIN_MOC_NAMESPACE
+#ifndef Q_CONSTINIT
+#define Q_CONSTINIT
+#endif
+
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_MainWidget_t {
-    QByteArrayData data[11];
-    char stringdata0[95];
-};
-#define QT_MOC_LITERAL(idx, ofs, len) \
-    Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_MainWidget_t, stringdata0) + ofs \
-        - idx * sizeof(QByteArrayData)) \
-    )
-static const qt_meta_stringdata_MainWidget_t qt_meta_stringdata_MainWidget = {
-    {
-QT_MOC_LITERAL(0, 0, 10), // "MainWidget"
-QT_MOC_LITERAL(1, 11, 8), // "carAdded"
-QT_MOC_LITERAL(2, 20, 4), // "emit"
-QT_MOC_LITERAL(3, 25, 7), // "initial"
-QT_MOC_LITERAL(4, 33, 11), // "destination"
-QT_MOC_LITERAL(5, 45, 5), // "speed"
-QT_MOC_LITERAL(6, 51, 9), // "frequency"
-QT_MOC_LITERAL(7, 61, 14), // "clearDebugText"
-QT_MOC_LITERAL(8, 76, 0), // ""
-QT_MOC_LITERAL(9, 77, 10), // "changeData"
-QT_MOC_LITERAL(10, 88, 6) // "addCar"
+QT_WARNING_DISABLE_GCC("-Wuseless-cast")
+namespace {
 
-    },
-    "MainWidget\0carAdded\0emit\0initial\0"
-    "destination\0speed\0frequency\0clearDebugText\0"
-    "\0changeData\0addCar"
-};
-#undef QT_MOC_LITERAL
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSMainWidgetENDCLASS_t {};
+constexpr auto qt_meta_stringdata_CLASSMainWidgetENDCLASS = QtMocHelpers::stringData(
+    "MainWidget",
+    "carAdded",
+    "emit",
+    "initial",
+    "destination",
+    "speed",
+    "frequency",
+    "clearDebugText",
+    "",
+    "changeData",
+    "addCar"
+);
+#else  // !QT_MOC_HAS_STRINGDATA
+#error "qtmochelpers.h not found or too old."
+#endif // !QT_MOC_HAS_STRINGDATA
+} // unnamed namespace
 
-static const uint qt_meta_data_MainWidget[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSMainWidgetENDCLASS[] = {
 
  // content:
-       8,       // revision
+      12,       // revision
        0,       // classname
        0,    0, // classinfo
        4,   14, // methods
@@ -64,13 +66,13 @@ static const uint qt_meta_data_MainWidget[] = {
        0,       // flags
        1,       // signalCount
 
- // signals: name, argc, parameters, tag, flags
-       1,    4,   34,    2, 0x06 /* Public */,
+ // signals: name, argc, parameters, tag, flags, initial metatype offsets
+       1,    4,   38,    2, 0x06,    1 /* Public */,
 
- // slots: name, argc, parameters, tag, flags
-       7,    0,   43,    8, 0x08 /* Private */,
-       9,    0,   44,    8, 0x08 /* Private */,
-      10,    0,   45,    8, 0x08 /* Private */,
+ // slots: name, argc, parameters, tag, flags, initial metatype offsets
+       7,    0,   47,    8, 0x08,    6 /* Private */,
+       9,    0,   48,    8, 0x08,    7 /* Private */,
+      10,    0,   49,    8, 0x08,    8 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::Int, QMetaType::Int,    3,    4,    5,    6,
@@ -83,13 +85,38 @@ static const uint qt_meta_data_MainWidget[] = {
        0        // eod
 };
 
+Q_CONSTINIT const QMetaObject MainWidget::staticMetaObject = { {
+    QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
+    qt_meta_stringdata_CLASSMainWidgetENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSMainWidgetENDCLASS,
+    qt_static_metacall,
+    nullptr,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSMainWidgetENDCLASS_t,
+        // Q_OBJECT / Q_GADGET
+        QtPrivate::TypeAndForceComplete<MainWidget, std::true_type>,
+        // method 'carAdded'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        // method 'clearDebugText'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'changeData'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'addCar'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>
+    >,
+    nullptr
+} };
+
 void MainWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         auto *_t = static_cast<MainWidget *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->carAdded((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4]))); break;
+        case 0: _t->carAdded((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[4]))); break;
         case 1: _t->clearDebugText(); break;
         case 2: _t->changeData(); break;
         case 3: _t->addCar(); break;
@@ -99,23 +126,13 @@ void MainWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         int *result = reinterpret_cast<int *>(_a[0]);
         {
             using _t = void (MainWidget::*)(const QString & , const QString & , int , int );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&MainWidget::carAdded)) {
+            if (_t _q_method = &MainWidget::carAdded; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
                 *result = 0;
                 return;
             }
         }
     }
 }
-
-QT_INIT_METAOBJECT const QMetaObject MainWidget::staticMetaObject = { {
-    QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
-    qt_meta_stringdata_MainWidget.data,
-    qt_meta_data_MainWidget,
-    qt_static_metacall,
-    nullptr,
-    nullptr
-} };
-
 
 const QMetaObject *MainWidget::metaObject() const
 {
@@ -125,7 +142,7 @@ const QMetaObject *MainWidget::metaObject() const
 void *MainWidget::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_MainWidget.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSMainWidgetENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QWidget::qt_metacast(_clname);
 }
@@ -141,7 +158,7 @@ int MainWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         _id -= 4;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         if (_id < 4)
-            *reinterpret_cast<int*>(_a[0]) = -1;
+            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
         _id -= 4;
     }
     return _id;
@@ -154,4 +171,3 @@ void MainWidget::carAdded(const QString & _t1, const QString & _t2, int _t3, int
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 QT_WARNING_POP
-QT_END_MOC_NAMESPACE

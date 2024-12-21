@@ -1,387 +1,415 @@
-/home/oreste/CLionProjects/GraphicsInQt/cmake-build-debug/GraphicsInQt_autogen/EWIEGA46WW/moc_AddCarDialog.cpp: /home/oreste/CLionProjects/GraphicsInQt/AddCarDialog.h \
-  /home/oreste/CLionProjects/GraphicsInQt/cmake-build-debug/GraphicsInQt_autogen/moc_predefs.h \
-  /usr/include/asm-generic/errno-base.h \
-  /usr/include/asm-generic/errno.h \
-  /usr/include/assert.h \
-  /usr/include/c++/11/algorithm \
-  /usr/include/c++/11/array \
-  /usr/include/c++/11/atomic \
-  /usr/include/c++/11/backward/auto_ptr.h \
-  /usr/include/c++/11/backward/binders.h \
-  /usr/include/c++/11/bit \
-  /usr/include/c++/11/bits/algorithmfwd.h \
-  /usr/include/c++/11/bits/align.h \
-  /usr/include/c++/11/bits/alloc_traits.h \
-  /usr/include/c++/11/bits/allocated_ptr.h \
-  /usr/include/c++/11/bits/allocator.h \
-  /usr/include/c++/11/bits/atomic_base.h \
-  /usr/include/c++/11/bits/atomic_lockfree_defines.h \
-  /usr/include/c++/11/bits/atomic_wait.h \
-  /usr/include/c++/11/bits/basic_ios.h \
-  /usr/include/c++/11/bits/basic_ios.tcc \
-  /usr/include/c++/11/bits/basic_string.h \
-  /usr/include/c++/11/bits/basic_string.tcc \
-  /usr/include/c++/11/bits/c++0x_warning.h \
-  /usr/include/c++/11/bits/char_traits.h \
-  /usr/include/c++/11/bits/charconv.h \
-  /usr/include/c++/11/bits/concept_check.h \
-  /usr/include/c++/11/bits/cpp_type_traits.h \
-  /usr/include/c++/11/bits/cxxabi_forced.h \
-  /usr/include/c++/11/bits/cxxabi_init_exception.h \
-  /usr/include/c++/11/bits/erase_if.h \
-  /usr/include/c++/11/bits/exception.h \
-  /usr/include/c++/11/bits/exception_defines.h \
-  /usr/include/c++/11/bits/exception_ptr.h \
-  /usr/include/c++/11/bits/functexcept.h \
-  /usr/include/c++/11/bits/functional_hash.h \
-  /usr/include/c++/11/bits/hash_bytes.h \
-  /usr/include/c++/11/bits/invoke.h \
-  /usr/include/c++/11/bits/ios_base.h \
-  /usr/include/c++/11/bits/iterator_concepts.h \
-  /usr/include/c++/11/bits/list.tcc \
-  /usr/include/c++/11/bits/locale_classes.h \
-  /usr/include/c++/11/bits/locale_classes.tcc \
-  /usr/include/c++/11/bits/locale_facets.h \
-  /usr/include/c++/11/bits/locale_facets.tcc \
-  /usr/include/c++/11/bits/localefwd.h \
-  /usr/include/c++/11/bits/max_size_type.h \
-  /usr/include/c++/11/bits/memoryfwd.h \
-  /usr/include/c++/11/bits/move.h \
-  /usr/include/c++/11/bits/nested_exception.h \
-  /usr/include/c++/11/bits/node_handle.h \
-  /usr/include/c++/11/bits/ostream.tcc \
-  /usr/include/c++/11/bits/ostream_insert.h \
-  /usr/include/c++/11/bits/postypes.h \
-  /usr/include/c++/11/bits/predefined_ops.h \
-  /usr/include/c++/11/bits/ptr_traits.h \
-  /usr/include/c++/11/bits/range_access.h \
-  /usr/include/c++/11/bits/ranges_algo.h \
-  /usr/include/c++/11/bits/ranges_algobase.h \
-  /usr/include/c++/11/bits/ranges_base.h \
-  /usr/include/c++/11/bits/ranges_cmp.h \
-  /usr/include/c++/11/bits/ranges_uninitialized.h \
-  /usr/include/c++/11/bits/ranges_util.h \
-  /usr/include/c++/11/bits/refwrap.h \
-  /usr/include/c++/11/bits/shared_ptr.h \
-  /usr/include/c++/11/bits/shared_ptr_atomic.h \
-  /usr/include/c++/11/bits/shared_ptr_base.h \
-  /usr/include/c++/11/bits/std_abs.h \
-  /usr/include/c++/11/bits/std_function.h \
-  /usr/include/c++/11/bits/std_mutex.h \
-  /usr/include/c++/11/bits/stl_algo.h \
-  /usr/include/c++/11/bits/stl_algobase.h \
-  /usr/include/c++/11/bits/stl_bvector.h \
-  /usr/include/c++/11/bits/stl_construct.h \
-  /usr/include/c++/11/bits/stl_function.h \
-  /usr/include/c++/11/bits/stl_heap.h \
-  /usr/include/c++/11/bits/stl_iterator.h \
-  /usr/include/c++/11/bits/stl_iterator_base_funcs.h \
-  /usr/include/c++/11/bits/stl_iterator_base_types.h \
-  /usr/include/c++/11/bits/stl_list.h \
-  /usr/include/c++/11/bits/stl_map.h \
-  /usr/include/c++/11/bits/stl_multimap.h \
-  /usr/include/c++/11/bits/stl_numeric.h \
-  /usr/include/c++/11/bits/stl_pair.h \
-  /usr/include/c++/11/bits/stl_raw_storage_iter.h \
-  /usr/include/c++/11/bits/stl_relops.h \
-  /usr/include/c++/11/bits/stl_tempbuf.h \
-  /usr/include/c++/11/bits/stl_tree.h \
-  /usr/include/c++/11/bits/stl_uninitialized.h \
-  /usr/include/c++/11/bits/stl_vector.h \
-  /usr/include/c++/11/bits/stream_iterator.h \
-  /usr/include/c++/11/bits/streambuf.tcc \
-  /usr/include/c++/11/bits/streambuf_iterator.h \
-  /usr/include/c++/11/bits/string_view.tcc \
-  /usr/include/c++/11/bits/stringfwd.h \
-  /usr/include/c++/11/bits/uniform_int_dist.h \
-  /usr/include/c++/11/bits/unique_ptr.h \
-  /usr/include/c++/11/bits/uses_allocator.h \
-  /usr/include/c++/11/bits/uses_allocator_args.h \
-  /usr/include/c++/11/bits/vector.tcc \
-  /usr/include/c++/11/cctype \
-  /usr/include/c++/11/cerrno \
-  /usr/include/c++/11/climits \
-  /usr/include/c++/11/clocale \
-  /usr/include/c++/11/compare \
-  /usr/include/c++/11/concepts \
-  /usr/include/c++/11/cstddef \
-  /usr/include/c++/11/cstdint \
-  /usr/include/c++/11/cstdlib \
-  /usr/include/c++/11/cwchar \
-  /usr/include/c++/11/cwctype \
-  /usr/include/c++/11/debug/assertions.h \
-  /usr/include/c++/11/debug/debug.h \
-  /usr/include/c++/11/exception \
-  /usr/include/c++/11/ext/aligned_buffer.h \
-  /usr/include/c++/11/ext/alloc_traits.h \
-  /usr/include/c++/11/ext/atomicity.h \
-  /usr/include/c++/11/ext/concurrence.h \
-  /usr/include/c++/11/ext/new_allocator.h \
-  /usr/include/c++/11/ext/numeric_traits.h \
-  /usr/include/c++/11/ext/string_conversions.h \
-  /usr/include/c++/11/ext/type_traits.h \
-  /usr/include/c++/11/functional \
-  /usr/include/c++/11/initializer_list \
-  /usr/include/c++/11/ios \
-  /usr/include/c++/11/iosfwd \
-  /usr/include/c++/11/iterator \
-  /usr/include/c++/11/limits \
-  /usr/include/c++/11/list \
-  /usr/include/c++/11/map \
-  /usr/include/c++/11/memory \
-  /usr/include/c++/11/new \
-  /usr/include/c++/11/numbers \
-  /usr/include/c++/11/numeric \
-  /usr/include/c++/11/ostream \
-  /usr/include/c++/11/pstl/execution_defs.h \
-  /usr/include/c++/11/pstl/glue_algorithm_defs.h \
-  /usr/include/c++/11/pstl/glue_memory_defs.h \
-  /usr/include/c++/11/pstl/glue_numeric_defs.h \
-  /usr/include/c++/11/stdexcept \
-  /usr/include/c++/11/stdlib.h \
-  /usr/include/c++/11/streambuf \
-  /usr/include/c++/11/string \
-  /usr/include/c++/11/string_view \
-  /usr/include/c++/11/tuple \
-  /usr/include/c++/11/type_traits \
-  /usr/include/c++/11/typeinfo \
-  /usr/include/c++/11/unordered_map \
-  /usr/include/c++/11/utility \
-  /usr/include/c++/11/vector \
-  /usr/include/ctype.h \
-  /usr/include/errno.h \
-  /usr/include/features-time64.h \
-  /usr/include/features.h \
-  /usr/include/linux/errno.h \
-  /usr/include/locale.h \
-  /usr/include/pthread.h \
-  /usr/include/sched.h \
-  /usr/include/stdc-predef.h \
-  /usr/include/stdio.h \
-  /usr/include/string.h \
-  /usr/include/strings.h \
-  /usr/include/syscall.h \
-  /usr/include/time.h \
-  /usr/include/unistd.h \
-  /usr/include/wchar.h \
-  /usr/include/wctype.h \
-  /usr/include/x86_64-linux-gnu/asm/errno.h \
-  /usr/include/x86_64-linux-gnu/asm/unistd.h \
-  /usr/include/x86_64-linux-gnu/asm/unistd_64.h \
-  /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h \
-  /usr/include/x86_64-linux-gnu/bits/confname.h \
-  /usr/include/x86_64-linux-gnu/bits/cpu-set.h \
-  /usr/include/x86_64-linux-gnu/bits/endian.h \
-  /usr/include/x86_64-linux-gnu/bits/endianness.h \
-  /usr/include/x86_64-linux-gnu/bits/environments.h \
-  /usr/include/x86_64-linux-gnu/bits/errno.h \
-  /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
-  /usr/include/x86_64-linux-gnu/bits/floatn.h \
-  /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
-  /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
-  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
-  /usr/include/x86_64-linux-gnu/bits/locale.h \
-  /usr/include/x86_64-linux-gnu/bits/long-double.h \
-  /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
-  /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h \
-  /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
-  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
-  /usr/include/x86_64-linux-gnu/bits/sched.h \
-  /usr/include/x86_64-linux-gnu/bits/setjmp.h \
-  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
-  /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
-  /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
-  /usr/include/x86_64-linux-gnu/bits/syscall.h \
-  /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
-  /usr/include/x86_64-linux-gnu/bits/time.h \
-  /usr/include/x86_64-linux-gnu/bits/time64.h \
-  /usr/include/x86_64-linux-gnu/bits/timesize.h \
-  /usr/include/x86_64-linux-gnu/bits/timex.h \
-  /usr/include/x86_64-linux-gnu/bits/types.h \
-  /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
-  /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
-  /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/clock_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h \
-  /usr/include/x86_64-linux-gnu/bits/types/time_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/timer_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/wint_t.h \
-  /usr/include/x86_64-linux-gnu/bits/typesizes.h \
-  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
-  /usr/include/x86_64-linux-gnu/bits/wchar.h \
-  /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
-  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/atomic_word.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/c++allocator.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/c++locale.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/cpu_defines.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_base.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_inline.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/gthr-default.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/gthr.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
-  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
-  /usr/include/x86_64-linux-gnu/gnu/stubs.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/QDebug \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/QPointF \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qabstractitemmodel.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qalgorithms.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qarraydata.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qatomic.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qatomic_cxx11.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qbasicatomic.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qbytearray.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qbytearraylist.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qchar.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qcompilerdetection.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qconfig.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qcontainerfwd.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qcontainertools_impl.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qcontiguouscache.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qdatastream.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qdebug.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qflags.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qgenericatomic.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qglobal.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qglobalstatic.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qhash.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qhashfunctions.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qiodevice.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qiterator.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qline.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qlist.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qlocale.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qlogging.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qmap.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qmargins.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qmetatype.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qnamespace.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qnumeric.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qobject.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qobject_impl.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qobjectdefs.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qobjectdefs_impl.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qpair.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qpoint.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qprocessordetection.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qrect.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qrefcount.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qregexp.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qregularexpression.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qscopedpointer.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qset.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qshareddata.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qsharedpointer.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qsharedpointer_impl.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qsize.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qstring.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qstringalgorithms.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qstringlist.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qstringliteral.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qstringmatcher.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qstringview.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qsysinfo.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qsystemdetection.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qtcore-config.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qtextstream.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qtypeinfo.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qurl.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qvariant.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qvarlengtharray.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qvector.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtCore/qversiontagging.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtGui/qbrush.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtGui/qcolor.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtGui/qcursor.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtGui/qfont.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtGui/qfontinfo.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtGui/qfontmetrics.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtGui/qicon.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtGui/qimage.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtGui/qkeysequence.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtGui/qmatrix.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtGui/qpaintdevice.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtGui/qpalette.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtGui/qpen.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtGui/qpixelformat.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtGui/qpixmap.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtGui/qpolygon.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtGui/qregion.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtGui/qrgb.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtGui/qrgba64.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtGui/qtextcursor.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtGui/qtextdocument.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtGui/qtextformat.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtGui/qtextoption.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtGui/qtgui-config.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtGui/qtguiglobal.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtGui/qtransform.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtGui/qvalidator.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtGui/qwindowdefs.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtSql/QSqlError \
-  /usr/include/x86_64-linux-gnu/qt5/QtSql/QSqlQuery \
-  /usr/include/x86_64-linux-gnu/qt5/QtSql/qsqldatabase.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtSql/qsqlerror.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtSql/qsqlquery.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtSql/qtsql-config.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtSql/qtsqlglobal.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QComboBox \
-  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QDialog \
-  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QGraphicsScene \
-  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QLabel \
-  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QLineEdit \
-  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QMessageBox \
-  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QPushButton \
-  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QTextEdit \
-  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QVBoxLayout \
-  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qabstractbutton.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qabstractitemdelegate.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qabstractscrollarea.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qabstractslider.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qabstractspinbox.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qboxlayout.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qcombobox.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdialog.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qframe.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgraphicsscene.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qgridlayout.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qlabel.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qlayout.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qlayoutitem.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qlineedit.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qmessagebox.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qpushbutton.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qrubberband.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qsizepolicy.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qslider.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qstyle.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qstyleoption.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtabbar.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtabwidget.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtextedit.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgets-config.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgetsglobal.h \
-  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qwidget.h \
-  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
-  /usr/include/x86_64-linux-gnu/sys/syscall.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h
+C:/Users/trant/ReseauxMasterMIAGE/projet/ProjetReaseaux/cmake-build-debug/GraphicsInQt_autogen/EWIEGA46WW/moc_AddCarDialog.cpp: C:/Users/trant/ReseauxMasterMIAGE/projet/ProjetReaseaux/AddCarDialog.h \
+  C:/Users/trant/ReseauxMasterMIAGE/projet/ProjetReaseaux/cmake-build-debug/GraphicsInQt_autogen/moc_predefs.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/algorithm \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/array \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/atomic \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward/auto_ptr.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward/binders.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bit \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/algorithmfwd.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/align.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/alloc_traits.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/allocated_ptr.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/allocator.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/atomic_base.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/atomic_lockfree_defines.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/basic_string.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/basic_string.tcc \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/char_traits.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/charconv.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/chrono.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/concept_check.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/cpp_type_traits.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/cxxabi_forced.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/cxxabi_init_exception.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/enable_special_members.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/erase_if.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/exception.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/exception_defines.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/exception_ptr.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/functexcept.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/functional_hash.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/hash_bytes.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/hashtable.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/hashtable_policy.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/invoke.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/ios_base.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/list.tcc \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/locale_classes.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/locale_classes.tcc \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/localefwd.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/memory_resource.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/memoryfwd.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/move.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/nested_exception.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/new_allocator.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/node_handle.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/ostream_insert.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/parse_numbers.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/postypes.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/predefined_ops.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/ptr_traits.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/range_access.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/refwrap.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/requires_hosted.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/shared_ptr.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/shared_ptr_atomic.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/shared_ptr_base.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/specfun.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/std_abs.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/std_function.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_algo.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_algobase.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_bvector.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_construct.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_function.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_heap.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_iterator.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_iterator_base_funcs.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_iterator_base_types.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_list.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_map.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_multimap.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_numeric.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_pair.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_raw_storage_iter.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_relops.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_tempbuf.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_tree.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_uninitialized.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_vector.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stream_iterator.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/streambuf.tcc \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/streambuf_iterator.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/string_view.tcc \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stringfwd.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/uniform_int_dist.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/unique_ptr.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/unordered_map.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/uses_allocator.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/uses_allocator_args.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/utility.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/vector.tcc \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cassert \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cctype \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cerrno \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/chrono \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/climits \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/clocale \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cmath \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/compare \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cstddef \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cstdint \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cstdio \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cstdlib \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cstring \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ctime \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cwchar \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/debug/assertions.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/debug/debug.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/exception \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ext/aligned_buffer.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ext/alloc_traits.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ext/atomicity.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ext/concurrence.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ext/numeric_traits.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ext/string_conversions.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ext/type_traits.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/functional \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/initializer_list \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/iosfwd \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/iterator \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/limits \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/list \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/map \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/memory \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/new \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/numeric \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/optional \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/pstl/execution_defs.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/pstl/glue_algorithm_defs.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/pstl/glue_memory_defs.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/pstl/glue_numeric_defs.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ratio \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/stdexcept \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/stdlib.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/streambuf \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/string \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/string_view \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/system_error \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/tr1/bessel_function.tcc \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/tr1/beta_function.tcc \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/tr1/ell_integral.tcc \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/tr1/exp_integral.tcc \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/tr1/gamma.tcc \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/tr1/hypergeometric.tcc \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/tr1/legendre_function.tcc \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/tr1/modified_bessel_func.tcc \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/tr1/poly_hermite.tcc \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/tr1/poly_laguerre.tcc \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/tr1/riemann_zeta.tcc \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/tr1/special_function_util.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/tuple \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/type_traits \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/typeinfo \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/unordered_map \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/utility \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/variant \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/vector \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/atomic_word.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/c++allocator.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/c++config.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/c++locale.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/cpu_defines.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/error_constants.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/gthr-default.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/gthr.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/os_defines.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/limits.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/stdarg.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/stdbool.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/stddef.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/stdint.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/syslimits.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/x86_64-w64-mingw32/include/_mingw.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/x86_64-w64-mingw32/include/_mingw_mac.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/x86_64-w64-mingw32/include/_mingw_off_t.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/x86_64-w64-mingw32/include/_mingw_secapi.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/x86_64-w64-mingw32/include/_mingw_stat64.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/x86_64-w64-mingw32/include/_timeval.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/x86_64-w64-mingw32/include/assert.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/x86_64-w64-mingw32/include/corecrt.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/x86_64-w64-mingw32/include/corecrt_startup.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/x86_64-w64-mingw32/include/corecrt_stdio_config.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/x86_64-w64-mingw32/include/corecrt_wstdlib.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/x86_64-w64-mingw32/include/crtdefs.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/x86_64-w64-mingw32/include/ctype.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/x86_64-w64-mingw32/include/errno.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/x86_64-w64-mingw32/include/locale.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/x86_64-w64-mingw32/include/process.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/x86_64-w64-mingw32/include/pthread.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/x86_64-w64-mingw32/include/pthread_compat.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/x86_64-w64-mingw32/include/pthread_signal.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/x86_64-w64-mingw32/include/pthread_time.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/x86_64-w64-mingw32/include/pthread_unistd.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/x86_64-w64-mingw32/include/sec_api/stdio_s.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/x86_64-w64-mingw32/include/sec_api/string_s.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/x86_64-w64-mingw32/include/sec_api/sys/timeb_s.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/x86_64-w64-mingw32/include/sec_api/wchar_s.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/x86_64-w64-mingw32/include/signal.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/x86_64-w64-mingw32/include/stdio.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/x86_64-w64-mingw32/include/string.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/x86_64-w64-mingw32/include/swprintf.inl \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/x86_64-w64-mingw32/include/sys/timeb.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/x86_64-w64-mingw32/include/sys/types.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/x86_64-w64-mingw32/include/time.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/x86_64-w64-mingw32/include/vadefs.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.2/bin/mingw/x86_64-w64-mingw32/include/wchar.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/QDebug \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/QPointF \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/q20functional.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/q20iterator.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/q20memory.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/q20type_traits.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/q23utility.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qabstractitemmodel.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qalgorithms.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qanystringview.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qarraydata.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qarraydataops.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qarraydatapointer.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qassert.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qatomic.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qatomic_cxx11.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qbasicatomic.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qbindingstorage.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qbytearray.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qbytearrayalgorithms.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qbytearraylist.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qbytearrayview.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qchar.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qcompare.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qcompare_impl.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qcomparehelpers.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qcompilerdetection.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qconfig.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qconstructormacros.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qcontainerfwd.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qcontainerinfo.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qcontainertools_impl.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qcontiguouscache.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qdarwinhelpers.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qdatastream.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qdebug.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qendian.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qexceptionhandling.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qflags.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qfloat16.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qforeach.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qfunctionaltools_impl.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qfunctionpointer.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qgenericatomic.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qglobal.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qglobalstatic.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qhash.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qhashfunctions.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qiodevice.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qiodevicebase.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qiterable.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qiterator.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qlatin1stringview.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qline.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qlist.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qlocale.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qlogging.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qmalloc.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qmap.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qmargins.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qmath.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qmetacontainer.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qmetaobject.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qmetatype.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qminmax.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qnamespace.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qnumeric.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qobject.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qobject_impl.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qobjectdefs.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qobjectdefs_impl.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qoverload.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qpair.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qpoint.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qprocessordetection.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qrect.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qrefcount.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qregularexpression.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qscopedpointer.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qscopeguard.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qset.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qshareddata.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qshareddata_impl.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qsharedpointer.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qsharedpointer_impl.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qsize.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qspan.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qstring.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qstringalgorithms.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qstringbuilder.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qstringconverter.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qstringconverter_base.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qstringfwd.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qstringlist.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qstringliteral.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qstringmatcher.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qstringtokenizer.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qstringview.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qswap.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qsysinfo.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qsystemdetection.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qtaggedpointer.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qtclasshelpermacros.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qtconfiginclude.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qtconfigmacros.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qtcore-config.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qtcoreexports.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qtdeprecationdefinitions.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qtdeprecationmarkers.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qtenvironmentvariables.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qtextstream.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qtmetamacros.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qtnoop.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qtpreprocessorsupport.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qtresource.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qttranslation.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qttypetraits.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qtversion.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qtversionchecks.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qtypeinfo.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qtypes.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qurl.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qutf8stringview.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qvariant.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qvarlengtharray.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qversiontagging.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qxptype_traits.h \
+  C:/Qt/6.8.0/mingw_64/include/QtCore/qyieldcpu.h \
+  C:/Qt/6.8.0/mingw_64/include/QtGui/qaction.h \
+  C:/Qt/6.8.0/mingw_64/include/QtGui/qbitmap.h \
+  C:/Qt/6.8.0/mingw_64/include/QtGui/qbrush.h \
+  C:/Qt/6.8.0/mingw_64/include/QtGui/qcolor.h \
+  C:/Qt/6.8.0/mingw_64/include/QtGui/qcursor.h \
+  C:/Qt/6.8.0/mingw_64/include/QtGui/qfont.h \
+  C:/Qt/6.8.0/mingw_64/include/QtGui/qfontinfo.h \
+  C:/Qt/6.8.0/mingw_64/include/QtGui/qfontmetrics.h \
+  C:/Qt/6.8.0/mingw_64/include/QtGui/qicon.h \
+  C:/Qt/6.8.0/mingw_64/include/QtGui/qimage.h \
+  C:/Qt/6.8.0/mingw_64/include/QtGui/qkeysequence.h \
+  C:/Qt/6.8.0/mingw_64/include/QtGui/qpaintdevice.h \
+  C:/Qt/6.8.0/mingw_64/include/QtGui/qpalette.h \
+  C:/Qt/6.8.0/mingw_64/include/QtGui/qpen.h \
+  C:/Qt/6.8.0/mingw_64/include/QtGui/qpicture.h \
+  C:/Qt/6.8.0/mingw_64/include/QtGui/qpixelformat.h \
+  C:/Qt/6.8.0/mingw_64/include/QtGui/qpixmap.h \
+  C:/Qt/6.8.0/mingw_64/include/QtGui/qpolygon.h \
+  C:/Qt/6.8.0/mingw_64/include/QtGui/qregion.h \
+  C:/Qt/6.8.0/mingw_64/include/QtGui/qrgb.h \
+  C:/Qt/6.8.0/mingw_64/include/QtGui/qrgba64.h \
+  C:/Qt/6.8.0/mingw_64/include/QtGui/qtextcursor.h \
+  C:/Qt/6.8.0/mingw_64/include/QtGui/qtextdocument.h \
+  C:/Qt/6.8.0/mingw_64/include/QtGui/qtextformat.h \
+  C:/Qt/6.8.0/mingw_64/include/QtGui/qtextoption.h \
+  C:/Qt/6.8.0/mingw_64/include/QtGui/qtgui-config.h \
+  C:/Qt/6.8.0/mingw_64/include/QtGui/qtguiexports.h \
+  C:/Qt/6.8.0/mingw_64/include/QtGui/qtguiglobal.h \
+  C:/Qt/6.8.0/mingw_64/include/QtGui/qtransform.h \
+  C:/Qt/6.8.0/mingw_64/include/QtGui/qvalidator.h \
+  C:/Qt/6.8.0/mingw_64/include/QtGui/qwindowdefs.h \
+  C:/Qt/6.8.0/mingw_64/include/QtGui/qwindowdefs_win.h \
+  C:/Qt/6.8.0/mingw_64/include/QtSql/QSqlError \
+  C:/Qt/6.8.0/mingw_64/include/QtSql/QSqlQuery \
+  C:/Qt/6.8.0/mingw_64/include/QtSql/qsqldatabase.h \
+  C:/Qt/6.8.0/mingw_64/include/QtSql/qsqlerror.h \
+  C:/Qt/6.8.0/mingw_64/include/QtSql/qsqlquery.h \
+  C:/Qt/6.8.0/mingw_64/include/QtSql/qtsql-config.h \
+  C:/Qt/6.8.0/mingw_64/include/QtSql/qtsqlexports.h \
+  C:/Qt/6.8.0/mingw_64/include/QtSql/qtsqlglobal.h \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/QComboBox \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/QDialog \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/QGraphicsScene \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/QLabel \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/QLineEdit \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/QMessageBox \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/QPushButton \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/QTextEdit \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/QVBoxLayout \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/qabstractbutton.h \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/qabstractslider.h \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/qabstractspinbox.h \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/qboxlayout.h \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/qcombobox.h \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/qdialog.h \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/qframe.h \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/qgraphicsscene.h \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/qgridlayout.h \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/qlabel.h \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/qlayout.h \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/qlayoutitem.h \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/qlineedit.h \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/qmessagebox.h \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/qpushbutton.h \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/qrubberband.h \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/qsizepolicy.h \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/qslider.h \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/qstyle.h \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/qstyleoption.h \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/qtabbar.h \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/qtabwidget.h \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/qtextedit.h \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/qtwidgets-config.h \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/qtwidgetsexports.h \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
+  C:/Qt/6.8.0/mingw_64/include/QtWidgets/qwidget.h

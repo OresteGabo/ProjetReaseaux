@@ -1,58 +1,60 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'AddCarDialog.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.15.3)
+** Created by: The Qt Meta Object Compiler version 68 (Qt 6.8.0)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include <memory>
 #include "../../../AddCarDialog.h"
-#include <QtCore/qbytearray.h>
+#include <QtGui/qtextcursor.h>
 #include <QtCore/qmetatype.h>
+
+#include <QtCore/qtmochelpers.h>
+
+#include <memory>
+
+
+#include <QtCore/qxptype_traits.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'AddCarDialog.h' doesn't include <QObject>."
-#elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.15.3. It"
+#elif Q_MOC_OUTPUT_REVISION != 68
+#error "This file was generated using the moc from 6.8.0. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
 
-QT_BEGIN_MOC_NAMESPACE
+#ifndef Q_CONSTINIT
+#define Q_CONSTINIT
+#endif
+
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_AddCarDialog_t {
-    QByteArrayData data[9];
-    char stringdata0[91];
-};
-#define QT_MOC_LITERAL(idx, ofs, len) \
-    Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_AddCarDialog_t, stringdata0) + ofs \
-        - idx * sizeof(QByteArrayData)) \
-    )
-static const qt_meta_stringdata_AddCarDialog_t qt_meta_stringdata_AddCarDialog = {
-    {
-QT_MOC_LITERAL(0, 0, 12), // "AddCarDialog"
-QT_MOC_LITERAL(1, 13, 8), // "carAdded"
-QT_MOC_LITERAL(2, 22, 0), // ""
-QT_MOC_LITERAL(3, 23, 13), // "initialNodeId"
-QT_MOC_LITERAL(4, 37, 17), // "destinationNodeId"
-QT_MOC_LITERAL(5, 55, 5), // "speed"
-QT_MOC_LITERAL(6, 61, 9), // "frequency"
-QT_MOC_LITERAL(7, 71, 10), // "onValidate"
-QT_MOC_LITERAL(8, 82, 8) // "onCancel"
+QT_WARNING_DISABLE_GCC("-Wuseless-cast")
+namespace {
 
-    },
-    "AddCarDialog\0carAdded\0\0initialNodeId\0"
-    "destinationNodeId\0speed\0frequency\0"
-    "onValidate\0onCancel"
-};
-#undef QT_MOC_LITERAL
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSAddCarDialogENDCLASS_t {};
+constexpr auto qt_meta_stringdata_CLASSAddCarDialogENDCLASS = QtMocHelpers::stringData(
+    "AddCarDialog",
+    "carAdded",
+    "",
+    "initialNodeId",
+    "destinationNodeId",
+    "speed",
+    "frequency",
+    "onValidate",
+    "onCancel"
+);
+#else  // !QT_MOC_HAS_STRINGDATA
+#error "qtmochelpers.h not found or too old."
+#endif // !QT_MOC_HAS_STRINGDATA
+} // unnamed namespace
 
-static const uint qt_meta_data_AddCarDialog[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSAddCarDialogENDCLASS[] = {
 
  // content:
-       8,       // revision
+      12,       // revision
        0,       // classname
        0,    0, // classinfo
        3,   14, // methods
@@ -62,12 +64,12 @@ static const uint qt_meta_data_AddCarDialog[] = {
        0,       // flags
        1,       // signalCount
 
- // signals: name, argc, parameters, tag, flags
-       1,    4,   29,    2, 0x06 /* Public */,
+ // signals: name, argc, parameters, tag, flags, initial metatype offsets
+       1,    4,   32,    2, 0x06,    1 /* Public */,
 
- // slots: name, argc, parameters, tag, flags
-       7,    0,   38,    2, 0x08 /* Private */,
-       8,    0,   39,    2, 0x08 /* Private */,
+ // slots: name, argc, parameters, tag, flags, initial metatype offsets
+       7,    0,   41,    2, 0x08,    6 /* Private */,
+       8,    0,   42,    2, 0x08,    7 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::Int, QMetaType::Int,    3,    4,    5,    6,
@@ -79,13 +81,36 @@ static const uint qt_meta_data_AddCarDialog[] = {
        0        // eod
 };
 
+Q_CONSTINIT const QMetaObject AddCarDialog::staticMetaObject = { {
+    QMetaObject::SuperData::link<QDialog::staticMetaObject>(),
+    qt_meta_stringdata_CLASSAddCarDialogENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSAddCarDialogENDCLASS,
+    qt_static_metacall,
+    nullptr,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSAddCarDialogENDCLASS_t,
+        // Q_OBJECT / Q_GADGET
+        QtPrivate::TypeAndForceComplete<AddCarDialog, std::true_type>,
+        // method 'carAdded'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        // method 'onValidate'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'onCancel'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>
+    >,
+    nullptr
+} };
+
 void AddCarDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         auto *_t = static_cast<AddCarDialog *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->carAdded((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4]))); break;
+        case 0: _t->carAdded((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[4]))); break;
         case 1: _t->onValidate(); break;
         case 2: _t->onCancel(); break;
         default: ;
@@ -94,23 +119,13 @@ void AddCarDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         int *result = reinterpret_cast<int *>(_a[0]);
         {
             using _t = void (AddCarDialog::*)(const QString & , const QString & , int , int );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&AddCarDialog::carAdded)) {
+            if (_t _q_method = &AddCarDialog::carAdded; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
                 *result = 0;
                 return;
             }
         }
     }
 }
-
-QT_INIT_METAOBJECT const QMetaObject AddCarDialog::staticMetaObject = { {
-    QMetaObject::SuperData::link<QDialog::staticMetaObject>(),
-    qt_meta_stringdata_AddCarDialog.data,
-    qt_meta_data_AddCarDialog,
-    qt_static_metacall,
-    nullptr,
-    nullptr
-} };
-
 
 const QMetaObject *AddCarDialog::metaObject() const
 {
@@ -120,7 +135,7 @@ const QMetaObject *AddCarDialog::metaObject() const
 void *AddCarDialog::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_AddCarDialog.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSAddCarDialogENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QDialog::qt_metacast(_clname);
 }
@@ -136,7 +151,7 @@ int AddCarDialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         _id -= 3;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         if (_id < 3)
-            *reinterpret_cast<int*>(_a[0]) = -1;
+            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
         _id -= 3;
     }
     return _id;
@@ -149,4 +164,3 @@ void AddCarDialog::carAdded(const QString & _t1, const QString & _t2, int _t3, i
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 QT_WARNING_POP
-QT_END_MOC_NAMESPACE
